@@ -71,17 +71,18 @@ returns jsonb as $$
     var hierarchyData = hierarchy["hierarchy_data"];
         
 	(function(root, callback){
-		(function recurse(node) {
+		(function recurse(node, parent) {
 			for (var index = 0, length = node.Children.length; index < length; index++) {
-				recurse(node.Children[index]);
+				recurse(node.Children[index], node);
 			}
-			callback(node);
-		})(root);
-	}(tree.Body.Root, function(node){
+			callback(node, parent);
+		})(root, { Id : "" });
+	}(tree.Body.Root, function(node, parent){
       	var found = false;
       
 		for(var index = 0; index < hierarchyData.length; index++){      
       		if(hierarchyData[index].id === node.Id){
+				node.ParentId = parent.Id
       			node.Content = hierarchyData[index].body;
         		node.Type = hierarchyData[index].type;
         		node["CreatedAt"] = hierarchyData[index]["created_at"];
