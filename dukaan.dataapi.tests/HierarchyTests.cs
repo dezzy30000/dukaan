@@ -37,7 +37,7 @@ namespace dukaan.dataapi.tests
 
                 Assert.Equal(expected, actual);
             },
-            @".\Scripts\Data\HierarchyTests.sql");
+            @".\TestData\HierarchyTests.sql");
         }
 
         private void Traverse(JObject node, Action<JObject> asserts)
@@ -126,7 +126,7 @@ namespace dukaan.dataapi.tests
                     Assert.Equal(assertNodeData.ChildCount, ((JArray)node["Children"]).Count);
                 });
             },
-             @".\Scripts\Data\HierarchyTests.sql");
+             @".\TestData\HierarchyTests.sql");
         }
 
         [Fact]
@@ -159,7 +159,7 @@ namespace dukaan.dataapi.tests
         {
             using (var connection = new NpgsqlConnection("Host=localhost;Username=user_dukaan_web;Password=password123;Database=dukaan"))
             {
-                var sqlBuilder = new StringBuilder(File.ReadAllText(@".\Scripts\Schema.sql"));
+                var sqlBuilder = new StringBuilder(File.ReadAllText(@".\Schema.sql"));
 
                 foreach (var script in scripts)
                 {

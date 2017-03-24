@@ -134,10 +134,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\Data\HierarchyTests.sql">
+    <Content Include="..\database\Schema.sql">
+      <Link>Schema.sql</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\Schema.sql">
+    <Content Include="TestData\HierarchyTests.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
