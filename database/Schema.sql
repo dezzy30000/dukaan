@@ -43,7 +43,7 @@ returns varchar[] as $$
 			}
 			callback(node);
 		})(root);
-	}(hierarchy.body.Root, function(node){
+	}(hierarchy.body, function(node){
       	ids.push(node.Id);
     }));
       
@@ -63,7 +63,7 @@ returns jsonb as $$
     var tree = {
     	"Id" : hierarchy.id,
         "Key" : hierarchy.key,
-        "Body" : hierarchy.body,
+        "Root" : hierarchy.body,
         "CreatedAt" : hierarchy["created_at"],
         "UpdatedAt" : hierarchy["updated_at"]
     };
@@ -71,18 +71,17 @@ returns jsonb as $$
     var hierarchyData = hierarchy["hierarchy_data"];
         
 	(function(root, callback){
-		(function recurse(node, parent) {
+		(function recurse(node) {
 			for (var index = 0, length = node.Children.length; index < length; index++) {
 				recurse(node.Children[index], node);
 			}
-			callback(node, parent);
-		})(root, { Id : "" });
-	}(tree.Body.Root, function(node, parent){
+			callback(node);
+		})(root);
+	}(tree.Root, function(node){
       	var found = false;
       
 		for(var index = 0; index < hierarchyData.length; index++){      
       		if(hierarchyData[index].id === node.Id){
-				node.ParentId = parent.Id
       			node.Content = hierarchyData[index].body;
         		node.Type = hierarchyData[index].type;
         		node["CreatedAt"] = hierarchyData[index]["created_at"];
