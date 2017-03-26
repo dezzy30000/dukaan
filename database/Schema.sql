@@ -51,11 +51,11 @@ returns varchar[] as $$
 $$ language plv8;
 
 create function get_hierarchy(hierarchy_key varchar) 
-returns jsonb as $$
+returns varchar as $$
     var hierarchy = plv8.execute("select id::varchar, key, body, created_at, updated_at, (select json_agg(node_doc) from (select id::varchar, body, type, created_at, updated_at from node_docs where id = any (get_hierarchy_ids($1)::bigint[])) as node_doc) as hierarchy_data from hierarchy_docs where key = $1;", hierarchy_key);
 
 	if(hierarchy.length == 0){
-		return {};
+		return JSON.stringify({});
 	}
 
 	hierarchy = hierarchy[0];
@@ -82,6 +82,9 @@ returns jsonb as $$
       
 		for(var index = 0; index < hierarchyData.length; index++){      
       		if(hierarchyData[index].id === node.Id){
+      			var nodeId = node.Id;
+      			delete node.Id; //Need to do this hack so metadata items are first in the list. plv8.execute returns the metadata property in the wrong order.
+      			node.Id = nodeId;
       			node.Content = hierarchyData[index].body;
         		node.Type = hierarchyData[index].type;
         		node["CreatedAt"] = hierarchyData[index]["created_at"];
@@ -96,7 +99,7 @@ returns jsonb as $$
       	}
     }));
     
-    return tree;
+    return JSON.stringify(tree);
 $$ language plv8;
 
 create table node_docs(

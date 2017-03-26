@@ -1,10 +1,13 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using dukaan.dataapi.tests.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Npgsql;
 using System;
 using System.IO;
 using System.Linq;
 using System.Text;
 using Xunit;
+using static dukaan.dataapi.tests.Models.Hierarchy;
 
 namespace dukaan.dataapi.tests
 {
@@ -162,6 +165,33 @@ namespace dukaan.dataapi.tests
             });
         }
 
+        [Fact]
+        public void GivenATreeStructuredJsonDocumentsWhenDeserialisedThenEachNodeShouldHaveThierParentReferencesCorrectlySet()
+        {
+            ConnectAndPrepareDatabase(command =>
+            {
+                const string Root = "1472459628771017730";
+
+                command
+                    .CommandText = $"{command.CommandText};select get_hierarchy('website');";
+
+                var hierarchy = JsonConvert.DeserializeObject<Hierarchy>((string)command.ExecuteScalar());
+
+                Traverse(hierarchy.Root, (node) => 
+                {
+                    if (node.Id == Root)
+                    {
+                        Assert.True(node.Parent == null);
+                    }
+                    else
+                    {
+                        Assert.True(node.Parent != null);
+                    }
+                });
+            },
+            @".\TestData\HierarchyTests.sql");
+        }
+
         private void ConnectAndPrepareDatabase(Action<NpgsqlCommand> test, params string[] scripts)
         {
             using (var connection = new NpgsqlConnection("Host=localhost;Username=user_dukaan_web;Password=password123;Database=dukaan"))
@@ -179,6 +209,16 @@ namespace dukaan.dataapi.tests
                     test(command);
                 }
             }
+        }
+
+        private void Traverse(Node node, Action<Node> callback)
+        {
+            for (int index = 0; index < node.Children.Count; index++)
+            {
+                Traverse(node.Children[index], callback);
+            }
+
+            callback(node);
         }
     }
 }
