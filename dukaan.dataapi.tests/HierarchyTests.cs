@@ -60,47 +60,47 @@ namespace dukaan.dataapi.tests
         {
             var assertsNodeData = new[]
             {
-                new { Id = "1472459628771017730", ReferenceId = "1", ParentReferenceId = (string)null, Type = "cras", ContentBody = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", ContentName = "lorem", ChildCount = 4 },
-                new { Id = "1472459628812960771", ReferenceId = "2", ParentReferenceId = "1", Type = "morbi", ContentBody = "Suspendisse a arcu a tortor scelerisque auctor vitae et nisl.", ContentName = "ipsum dolor", ChildCount = 2 },
-                new { Id = "1472459628812960772", ReferenceId = "3", ParentReferenceId = "2", Type = "aliquam", ContentBody = "Praesent eget turpis at dolor efficitur dapibus nec at augue.", ContentName = "sit amet", ChildCount = 1 },
-                new { Id = "1472459628812960773", ReferenceId = "4", ParentReferenceId = "3", Type = "maecenas", ContentBody = "Duis in lorem aliquet, mattis nisi at, finibus urna.", ContentName = "consectetur", ChildCount = 3 },
-                new { Id = "1472459628812960774", ReferenceId = "5", ParentReferenceId = "4", Type = "proin", ContentBody = "Curabitur id diam id elit malesuada sollicitudin quis nec velit.", ContentName = "adipiscing", ChildCount = 1 },
-                new { Id = "1472459628812960775", ReferenceId = "9", ParentReferenceId = "4", Type = "proin", ContentBody = "Mauris ultrices ex et velit condimentum vestibulum vel ac diam.", ContentName = "elit.a", ChildCount = 0 },
-                new { Id = "1472459628812960776", ReferenceId = "10", ParentReferenceId = "4", Type = "aliquam", ContentBody = "Ut et nisi vestibulum, lobortis orci sed, iaculis odio.", ContentName = "Integer sagittis", ChildCount = 0 },
-                new { Id = "1472459628812960777", ReferenceId = "11", ParentReferenceId = "2", Type = "cras", ContentBody = "Sed fermentum augue at erat dignissim tempor.", ContentName = "condimentum", ChildCount = 0 },
-                new { Id = "1472459628812960778", ReferenceId = "12", ParentReferenceId = "1", Type = "proin", ContentBody = "Aenean varius neque sit amet diam elementum placerat.", ContentName = "sodales", ChildCount = 1 },
-                new { Id = "1472459628812960779", ReferenceId = "13", ParentReferenceId = "12", Type = "aliquam", ContentBody = "Nam vel felis eu mi faucibus consequat vel non justo.", ContentName = "Pellentesque", ChildCount = 6 },
-                new { Id = "1472459628812960780", ReferenceId = "14", ParentReferenceId = "13", Type = "proin", ContentBody = "Nam eget massa sed leo suscipit volutpat.", ContentName = "tempor", ChildCount = 0 },
-                new { Id = "1472459628812960781", ReferenceId = "15", ParentReferenceId = "13", Type = "aliquam", ContentBody = "Ut consectetur ipsum nec venenatis bibendum.", ContentName = "id", ChildCount = 0 },
-                new { Id = "1472459628812960782", ReferenceId = "16", ParentReferenceId = "13", Type = "morbi", ContentBody = "Donec id felis pharetra sapien efficitur vulputate vel et mauris.", ContentName = "velit", ChildCount = 0 },
-                new { Id = "1472459628812960783", ReferenceId = "17", ParentReferenceId = "13", Type = "maecenas", ContentBody = "Sed nec erat in nisi porttitor lacinia non et metus.", ContentName = "eget ullamcorper", ChildCount = 0 },
-                new { Id = "1472459628821349392", ReferenceId = "18", ParentReferenceId = "13", Type = "morbi", ContentBody = "Etiam semper massa non purus bibendum lacinia.", ContentName = "Vestibulum", ChildCount = 0 },
-                new { Id = "1472459628821349393", ReferenceId = "19", ParentReferenceId = "13", Type = "maecenas", ContentBody = "Pellentesque posuere nunc ut iaculis pulvinar.", ContentName = "tempus", ChildCount = 0 },
-                new { Id = "1472459628821349394", ReferenceId = "20", ParentReferenceId = "1", Type = "morbi", ContentBody = "Nulla vel orci quis lorem rutrum egestas.", ContentName = "dignissim", ChildCount = 1 },
-                new { Id = "1472459628821349395", ReferenceId = "21", ParentReferenceId = "20", Type = "proin", ContentBody = "Donec cursus eros a vestibulum fringilla.", ContentName = "lacus", ChildCount = 1 },
-                new { Id = "1472459628821349396", ReferenceId = "22", ParentReferenceId = "21", Type = "cras", ContentBody = "Aliquam gravida purus suscipit, tristique odio sit amet, mattis diam.", ContentName = "eget", ChildCount = 6 },
-                new { Id = "1472459628821349397", ReferenceId = "23", ParentReferenceId = "22", Type = "maecenas", ContentBody = "Pellentesque quis orci ornare, pellentesque sapien eu, varius nibh.", ContentName = "dictum", ChildCount = 0 },
-                new { Id = "1472459628821349398", ReferenceId = "24", ParentReferenceId = "22", Type = "cras", ContentBody = "Vestibulum laoreet elit ac magna finibus dictum.", ContentName = "metus", ChildCount = 0 },
-                new { Id = "1472459628821349399", ReferenceId = "25", ParentReferenceId = "22", Type = "aliquam", ContentBody = "Ut at erat sed erat venenatis consequat quis eget nulla.", ContentName = "finibus", ChildCount = 0 },
-                new { Id = "1472459628821349400", ReferenceId = "26", ParentReferenceId = "22", Type = "cras", ContentBody = "Vestibulum ut dolor tincidunt, laoreet nunc bibendum, volutpat ex.", ContentName = "euismod", ChildCount = 0 },
-                new { Id = "1472459628821349401", ReferenceId = "27", ParentReferenceId = "22", Type = "morbi", ContentBody = "Morbi quis neque ac mauris sollicitudin tincidunt et ac mauris.", ContentName = "Maecenas", ChildCount = 0 },
-                new { Id = "1472459628821349402", ReferenceId = "28", ParentReferenceId = "22", Type = "maecenas", ContentBody = "Nunc bibendum ex sed massa laoreet, non maximus ex venenatis.", ContentName = "convallis", ChildCount = 0 },
-                new { Id = "1472459628821349403", ReferenceId = "30", ParentReferenceId = "29", Type = "morbi", ContentBody = "Morbi blandit odio ut tellus laoreet, vel imperdiet tortor tristique.", ContentName = "tortor", ChildCount = 0 },
-                new { Id = "1472459628821349404", ReferenceId = "31", ParentReferenceId = "29", Type = "morbi", ContentBody = "Integer vestibulum mi vel auctor ullamcorper.", ContentName = "at", ChildCount = 0 },
-                new { Id = "1472459628821349405", ReferenceId = "32", ParentReferenceId = "29", Type = "cras", ContentBody = "Vivamus sed urna sit amet elit facilisis feugiat.", ContentName = "dapibus", ChildCount = 0 },
-                new { Id = "1472459628821349406", ReferenceId = "33", ParentReferenceId = "29", Type = "cras", ContentBody = "Aliquam sed felis efficitur, auctor erat sed, porta arcu.", ContentName = "viverra", ChildCount = 0 },
-                new { Id = "1472459628829738015", ReferenceId = "34", ParentReferenceId = "29", Type = "maecenas", ContentBody = "Duis a lorem nec eros euismod eleifend.", ContentName = "Mauris", ChildCount = 0 },
-                new { Id = "1472459628829738016", ReferenceId = "35", ParentReferenceId = "29", Type = "maecenas", ContentBody = "Curabitur iaculis velit gravida, tempor tellus ullamcorper, ultrices felis.", ContentName = "gravida sem", ChildCount = 0 },
-                new { Id = "1472459628829738017", ReferenceId = "36", ParentReferenceId = "29", Type = "aliquam", ContentBody = "Duis non nisi in turpis interdum accumsan.", ContentName = "vel", ChildCount = 0 },
-                new { Id = "1472459628829738018", ReferenceId = "37", ParentReferenceId = "29", Type = "aliquam", ContentBody = "Sed ut purus sit amet mi lacinia bibendum sit amet sit amet augue.", ContentName = "tellus", ChildCount = 0 },
-                new { Id = "1472459628829738019", ReferenceId = "38", ParentReferenceId = "29", Type = "proin", ContentBody = "Curabitur a sapien vitae dui rutrum accumsan.", ContentName = "pharetra", ChildCount = 0 },
-                new { Id = "1472459628829738020", ReferenceId = "39", ParentReferenceId = "29", Type = "aliquam", ContentBody = "Integer tempus ipsum mattis auctor hendrerit.", ContentName = "suscipi", ChildCount = 0 },
-                new { Id = "1472459628829738021", ReferenceId = "40", ParentReferenceId = "29", Type = "proin", ContentBody = "Nunc sollicitudin dolor sed nisi luctus, sed tincidunt est scelerisque.", ContentName = "Suspendisse", ChildCount = 0 },
-                new { Id = "1472459628829738022", ReferenceId = "41", ParentReferenceId = "29", Type = "morbi", ContentBody = "Proin ultrices ligula eget lacus tempor tincidunt.", ContentName = "bibendum", ChildCount = 0 },
-                new { Id = "1472459628829738023", ReferenceId = "6", ParentReferenceId = "5", Type = "proin", ContentBody = "Proin ut nisl a diam pharetra auctor.", ContentName = "consectetur", ChildCount = 1 },
-                new { Id = "1472459628829738024", ReferenceId = "7", ParentReferenceId = "6", Type = "maecenas", ContentBody = "Vestibulum id lacus ac mi pharetra congue.", ContentName = "malesuada", ChildCount = 1 },
-                new { Id = "1472459628829738025", ReferenceId = "8", ParentReferenceId = "7", Type = "cras", ContentBody = "Ut facilisis dui a aliquet auctor.", ContentName = "aliquet", ChildCount = 0 },
-                new { Id = "1472459628821349499", ReferenceId = "29", ParentReferenceId = "1", Type = "aliquam", ContentBody = "Praesent sit amet mattis justo, in molestie arcu.", ContentName = "massa accumsan", ChildCount = 12 }
+                new { Id = "1472459628771017730", ReferenceId = "1", ParentReferenceId = (string)null, Type = "cras", Content = "{\"Body\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\"Name\":\"lorem\"}", ChildCount = 4 },
+                new { Id = "1472459628812960771", ReferenceId = "2", ParentReferenceId = "1", Type = "morbi", Content = "{\"Body\":\"Suspendisse a arcu a tortor scelerisque auctor vitae et nisl.\",\"Name\":\"ipsum dolor\"}", ChildCount = 2 },
+                new { Id = "1472459628812960772", ReferenceId = "3", ParentReferenceId = "2", Type = "aliquam", Content = "{\"Body\":\"Praesent eget turpis at dolor efficitur dapibus nec at augue.\",\"Name\":\"sit amet\"}", ChildCount = 1 },
+                new { Id = "1472459628812960773", ReferenceId = "4", ParentReferenceId = "3", Type = "maecenas", Content = "{\"Body\":\"Duis in lorem aliquet, mattis nisi at, finibus urna.\",\"Name\":\"consectetur\"}", ChildCount = 3 },
+                new { Id = "1472459628812960774", ReferenceId = "5", ParentReferenceId = "4", Type = "proin", Content = "{\"Body\":\"Curabitur id diam id elit malesuada sollicitudin quis nec velit.\",\"Name\":\"adipiscing\"}", ChildCount = 1 },
+                new { Id = "1472459628812960775", ReferenceId = "9", ParentReferenceId = "4", Type = "proin", Content = "{\"Body\":\"Mauris ultrices ex et velit condimentum vestibulum vel ac diam.\",\"Name\":\"elit.a\"}", ChildCount = 0 },
+                new { Id = "1472459628812960776", ReferenceId = "10", ParentReferenceId = "4", Type = "aliquam", Content = "{\"Body\":\"Ut et nisi vestibulum, lobortis orci sed, iaculis odio.\",\"Name\":\"Integer sagittis\"}", ChildCount = 0 },
+                new { Id = "1472459628812960777", ReferenceId = "11", ParentReferenceId = "2", Type = "cras", Content = "{\"Body\":\"Sed fermentum augue at erat dignissim tempor.\",\"Name\":\"condimentum\"}", ChildCount = 0 },
+                new { Id = "1472459628812960778", ReferenceId = "12", ParentReferenceId = "1", Type = "proin", Content = "{\"Body\":\"Aenean varius neque sit amet diam elementum placerat.\",\"Name\":\"sodales\"}", ChildCount = 1 },
+                new { Id = "1472459628812960779", ReferenceId = "13", ParentReferenceId = "12", Type = "aliquam", Content = "{\"Body\":\"Nam vel felis eu mi faucibus consequat vel non justo.\",\"Name\":\"Pellentesque\"}", ChildCount = 6 },
+                new { Id = "1472459628812960780", ReferenceId = "14", ParentReferenceId = "13", Type = "proin", Content = "{\"Body\":\"Nam eget massa sed leo suscipit volutpat.\",\"Name\":\"tempor\"}", ChildCount = 0 },
+                new { Id = "1472459628812960781", ReferenceId = "15", ParentReferenceId = "13", Type = "aliquam", Content = "{\"Body\":\"Ut consectetur ipsum nec venenatis bibendum.\",\"Name\":\"id\"}", ChildCount = 0 },
+                new { Id = "1472459628812960782", ReferenceId = "16", ParentReferenceId = "13", Type = "morbi", Content = "{\"Body\":\"Donec id felis pharetra sapien efficitur vulputate vel et mauris.\",\"Name\":\"velit\"}", ChildCount = 0 },
+                new { Id = "1472459628812960783", ReferenceId = "17", ParentReferenceId = "13", Type = "maecenas", Content = "{\"Body\":\"Sed nec erat in nisi porttitor lacinia non et metus.\",\"Name\":\"eget ullamcorper\"}", ChildCount = 0 },
+                new { Id = "1472459628821349392", ReferenceId = "18", ParentReferenceId = "13", Type = "morbi", Content = "{\"Body\":\"Etiam semper massa non purus bibendum lacinia.\",\"Name\":\"Vestibulum\"}", ChildCount = 0 },
+                new { Id = "1472459628821349393", ReferenceId = "19", ParentReferenceId = "13", Type = "maecenas", Content = "{\"Body\":\"Pellentesque posuere nunc ut iaculis pulvinar.\",\"Name\":\"tempus\"}", ChildCount = 0 },
+                new { Id = "1472459628821349394", ReferenceId = "20", ParentReferenceId = "1", Type = "morbi", Content = "{\"Body\":\"Nulla vel orci quis lorem rutrum egestas.\",\"Name\":\"dignissim\"}", ChildCount = 1 },
+                new { Id = "1472459628821349395", ReferenceId = "21", ParentReferenceId = "20", Type = "proin", Content = "{\"Body\":\"Donec cursus eros a vestibulum fringilla.\",\"Name\":\"lacus\"}", ChildCount = 1 },
+                new { Id = "1472459628821349396", ReferenceId = "22", ParentReferenceId = "21", Type = "cras", Content = "{\"Body\":\"Aliquam gravida purus suscipit, tristique odio sit amet, mattis diam.\",\"Name\":\"eget\"}", ChildCount = 6 },
+                new { Id = "1472459628821349397", ReferenceId = "23", ParentReferenceId = "22", Type = "maecenas", Content = "{\"Body\":\"Pellentesque quis orci ornare, pellentesque sapien eu, varius nibh.\",\"Name\":\"dictum\"}", ChildCount = 0 },
+                new { Id = "1472459628821349398", ReferenceId = "24", ParentReferenceId = "22", Type = "cras", Content = "{\"Body\":\"Vestibulum laoreet elit ac magna finibus dictum.\",\"Name\":\"metus\"}", ChildCount = 0 },
+                new { Id = "1472459628821349399", ReferenceId = "25", ParentReferenceId = "22", Type = "aliquam", Content = "{\"Body\":\"Ut at erat sed erat venenatis consequat quis eget nulla.\",\"Name\":\"finibus\"}", ChildCount = 0 },
+                new { Id = "1472459628821349400", ReferenceId = "26", ParentReferenceId = "22", Type = "cras", Content = "{\"Body\":\"Vestibulum ut dolor tincidunt, laoreet nunc bibendum, volutpat ex.\",\"Name\":\"euismod\"}", ChildCount = 0 },
+                new { Id = "1472459628821349401", ReferenceId = "27", ParentReferenceId = "22", Type = "morbi", Content = "{\"Body\":\"Morbi quis neque ac mauris sollicitudin tincidunt et ac mauris.\",\"Name\":\"Maecenas\"}", ChildCount = 0 },
+                new { Id = "1472459628821349402", ReferenceId = "28", ParentReferenceId = "22", Type = "maecenas", Content = "{\"Body\":\"Nunc bibendum ex sed massa laoreet, non maximus ex venenatis.\",\"Name\":\"convallis\"}", ChildCount = 0 },
+                new { Id = "1472459628821349403", ReferenceId = "30", ParentReferenceId = "29", Type = "morbi", Content = "{\"Body\":\"Morbi blandit odio ut tellus laoreet, vel imperdiet tortor tristique.\",\"Name\":\"tortor\"}", ChildCount = 0 },
+                new { Id = "1472459628821349404", ReferenceId = "31", ParentReferenceId = "29", Type = "morbi", Content = "{\"Body\":\"Integer vestibulum mi vel auctor ullamcorper.\",\"Name\":\"at\"}", ChildCount = 0 },
+                new { Id = "1472459628821349405", ReferenceId = "32", ParentReferenceId = "29", Type = "cras", Content = "{\"Body\":\"Vivamus sed urna sit amet elit facilisis feugiat.\",\"Name\":\"dapibus\"}", ChildCount = 0 },
+                new { Id = "1472459628821349406", ReferenceId = "33", ParentReferenceId = "29", Type = "cras", Content = "{\"Body\":\"Aliquam sed felis efficitur, auctor erat sed, porta arcu.\",\"Name\":\"viverra\"}", ChildCount = 0 },
+                new { Id = "1472459628829738015", ReferenceId = "34", ParentReferenceId = "29", Type = "maecenas", Content = "{\"Body\":\"Duis a lorem nec eros euismod eleifend.\",\"Name\":\"Mauris\"}", ChildCount = 0 },
+                new { Id = "1472459628829738016", ReferenceId = "35", ParentReferenceId = "29", Type = "maecenas", Content = "{\"Body\":\"Curabitur iaculis velit gravida, tempor tellus ullamcorper, ultrices felis.\",\"Name\":\"gravida sem\"}", ChildCount = 0 },
+                new { Id = "1472459628829738017", ReferenceId = "36", ParentReferenceId = "29", Type = "aliquam", Content = "{\"Body\":\"Duis non nisi in turpis interdum accumsan.\",\"Name\":\"vel\"}", ChildCount = 0 },
+                new { Id = "1472459628829738018", ReferenceId = "37", ParentReferenceId = "29", Type = "aliquam", Content = "{\"Body\":\"Sed ut purus sit amet mi lacinia bibendum sit amet sit amet augue.\",\"Name\":\"tellus\"}", ChildCount = 0 },
+                new { Id = "1472459628829738019", ReferenceId = "38", ParentReferenceId = "29", Type = "proin", Content = "{\"Body\":\"Curabitur a sapien vitae dui rutrum accumsan.\",\"Name\":\"pharetra\"}", ChildCount = 0 },
+                new { Id = "1472459628829738020", ReferenceId = "39", ParentReferenceId = "29", Type = "aliquam", Content = "{\"Body\":\"Integer tempus ipsum mattis auctor hendrerit.\",\"Name\":\"suscipi\"}", ChildCount = 0 },
+                new { Id = "1472459628829738021", ReferenceId = "40", ParentReferenceId = "29", Type = "proin", Content = "{\"Body\":\"Nunc sollicitudin dolor sed nisi luctus, sed tincidunt est scelerisque.\",\"Name\":\"Suspendisse\"}", ChildCount = 0 },
+                new { Id = "1472459628829738022", ReferenceId = "41", ParentReferenceId = "29", Type = "morbi", Content = "{\"Body\":\"Proin ultrices ligula eget lacus tempor tincidunt.\",\"Name\":\"bibendum\"}", ChildCount = 0 },
+                new { Id = "1472459628829738023", ReferenceId = "6", ParentReferenceId = "5", Type = "proin", Content = "{\"Body\":\"Proin ut nisl a diam pharetra auctor.\",\"Name\":\"consectetur\"}", ChildCount = 1 },
+                new { Id = "1472459628829738024", ReferenceId = "7", ParentReferenceId = "6", Type = "maecenas", Content = "{\"Body\":\"Vestibulum id lacus ac mi pharetra congue.\",\"Name\":\"malesuada\"}", ChildCount = 1 },
+                new { Id = "1472459628829738025", ReferenceId = "8", ParentReferenceId = "7", Type = "cras", Content = "{\"Body\":\"Ut facilisis dui a aliquet auctor.\",\"Name\":\"aliquet\"}", ChildCount = 0 },
+                new { Id = "1472459628821349499", ReferenceId = "29", ParentReferenceId = "1", Type = "aliquam", Content = "{\"Body\":\"Praesent sit amet mattis justo, in molestie arcu.\",\"Name\":\"massa accumsan\"}", ChildCount = 12 }
             };
 
             var assertCount = 0;
@@ -129,8 +129,7 @@ namespace dukaan.dataapi.tests
                     Assert.Equal(assertNodeData.Type, (string)node["Type"]);
                     Assert.IsType<DateTime>((DateTime)node["CreatedAt"]);
                     Assert.IsType<DateTime>((DateTime)node["UpdatedAt"]);
-                    Assert.Equal(assertNodeData.ContentBody, (string)node["Content"]["Body"]);
-                    Assert.Equal(assertNodeData.ContentName, (string)node["Content"]["Name"]);
+                    Assert.Equal(assertNodeData.Content, (string)node["Content"]);
                     Assert.Equal(assertNodeData.ChildCount, ((JArray)node["Children"]).Count);
 
                     assertCount++;
@@ -209,7 +208,7 @@ namespace dukaan.dataapi.tests
 
         private void ConnectAndPrepareDatabase(Action<NpgsqlCommand> test, params string[] scripts)
         {
-            using (var connection = new NpgsqlConnection("Host=localhost;Username=user_dukaan_web;Password=password123;Database=dukaan"))
+            using (var connection = new NpgsqlConnection("Host=localhost;Username=user_dukaan_web;Password=password123;Database=dukaan;Search Path=dukaan.web"))
             {
                 var sqlBuilder = new StringBuilder(File.ReadAllText(AppendCurrentDirectoryPath(@".\Schema.sql")));
 

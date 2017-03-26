@@ -83,9 +83,9 @@ returns varchar as $$
 		for(var index = 0; index < hierarchyData.length; index++){      
       		if(hierarchyData[index].id === node.Id){
       			var nodeId = node.Id;
-      			delete node.Id; //Need to do this hack so metadata items are first in the list. plv8.execute returns the metadata property in the wrong order.
+      			delete node.Id; //This is a hack so metadata items are first in the list. plv8.execute() returns metadata properties in the wrong order.
       			node.Id = nodeId;
-      			node.Content = hierarchyData[index].body;
+      			node.Content = JSON.stringify(hierarchyData[index].body);
         		node.Type = hierarchyData[index].type;
         		node["CreatedAt"] = hierarchyData[index]["created_at"];
         		node["UpdatedAt"] = hierarchyData[index]["updated_at"];

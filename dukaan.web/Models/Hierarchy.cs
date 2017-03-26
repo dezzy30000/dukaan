@@ -12,13 +12,12 @@ namespace dukaan.web.Models
         {
             public Node()
             {
-                Content = new Content();
                 Children = new List<Node>();
             }
 
             public string Id { get; set; }
             public string Type { get; set; }
-            public Content Content { get; set; }
+            public string Content { get; set; }
             public DateTime CreatedAt { get; set; }
             public DateTime UpdatedAt { get; set; }
             public Node Parent { get; set; }
