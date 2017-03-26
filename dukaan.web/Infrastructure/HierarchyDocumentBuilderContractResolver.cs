@@ -14,20 +14,29 @@ namespace dukaan.web.Infrastructure
             : base()
         {
             var node = new Node();
-            _propertiesToSerialize = new[] { nameof(node.Id), nameof(node.Parent), nameof(node.Children) };
+
+            _propertiesToSerialize = new[] 
+            {
+                nameof(node.Id),
+                nameof(node.Parent),
+                nameof(node.Children)
+            };
         }
 
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
             JsonProperty property = base.CreateProperty(member, memberSerialization);
 
-            if (property.DeclaringType == typeof(Node) && _propertiesToSerialize.Any(p => p == property.PropertyName))
+            if (property.DeclaringType == typeof(Node))
             {
-                property.ShouldSerialize = p => true;
-            }
-            else
-            {
-                property.ShouldSerialize = p => false;
+                if (_propertiesToSerialize.Any(propertyName => propertyName == property.PropertyName))
+                {
+                    property.ShouldSerialize = p => true;
+                }
+                else
+                {
+                    property.ShouldSerialize = p => false;
+                }
             }
 
             return property;
