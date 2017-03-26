@@ -2,12 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dukaan.dataapi.tests", "dukaan.dataapi.tests\dukaan.dataapi.tests.csproj", "{8B75005D-33A3-4A45-A335-37B59A68A108}"
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dukaan.web", "dukaan.web\dukaan.web.csproj", "{CED1133E-80D2-48AF-A1C9-3414804D21C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dukaan.web", "dukaan.web\dukaan.web.csproj", "{A1C2794F-B10A-471F-A06C-641479DEE954}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dukaan.dataapi.tests", "dukaan.dataapi.tests\dukaan.dataapi.tests.csproj", "{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{677F33F0-EB69-45A3-88EB-C72034B3BC56}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{CF9235A7-8BA8-4D94-A134-6AC62BE26E6B}"
 	ProjectSection(SolutionItems) = preProject
 		database\Schema.sql = database\Schema.sql
 	EndProjectSection
@@ -15,17 +15,37 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8B75005D-33A3-4A45-A335-37B59A68A108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B75005D-33A3-4A45-A335-37B59A68A108}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B75005D-33A3-4A45-A335-37B59A68A108}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B75005D-33A3-4A45-A335-37B59A68A108}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1C2794F-B10A-471F-A06C-641479DEE954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1C2794F-B10A-471F-A06C-641479DEE954}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1C2794F-B10A-471F-A06C-641479DEE954}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1C2794F-B10A-471F-A06C-641479DEE954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Debug|x64.Build.0 = Debug|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Debug|x86.Build.0 = Debug|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Release|x64.ActiveCfg = Release|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Release|x64.Build.0 = Release|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Release|x86.ActiveCfg = Release|Any CPU
+		{CED1133E-80D2-48AF-A1C9-3414804D21C4}.Release|x86.Build.0 = Release|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Debug|x64.Build.0 = Debug|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Debug|x86.Build.0 = Debug|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Release|x64.ActiveCfg = Release|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Release|x64.Build.0 = Release|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Release|x86.ActiveCfg = Release|Any CPU
+		{B574029F-2FA2-4CFB-9685-9E823D2BF7CD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

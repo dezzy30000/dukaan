@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace dukaan.dataapi.tests.Models
+namespace dukaan.web.Models
 {
     [JsonObject(IsReference = false)]
     public class Hierarchy

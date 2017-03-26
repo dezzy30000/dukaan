@@ -1,9 +1,9 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:56944/",
+      "applicationUrl": "http://localhost:61012/",
       "sslPort": 0
     }
   },
@@ -16,12 +16,7 @@
       }
     },
     "dukaan.web": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:56945"
+      "commandName": "Project"
     }
   }
 }

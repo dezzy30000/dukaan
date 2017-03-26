@@ -1,4 +1,4 @@
-﻿using dukaan.dataapi.tests.Models;
+using dukaan.web.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Npgsql;
@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Xunit;
-using static dukaan.dataapi.tests.Models.Hierarchy;
+using static dukaan.web.Models.Hierarchy;
 
 namespace dukaan.dataapi.tests
 {
@@ -160,7 +160,7 @@ namespace dukaan.dataapi.tests
             {
                 command
                     .CommandText = $"{command.CommandText};select get_hierarchy('website');";
-                
+
                 Assert.NotNull(JObject.Parse((string)command.ExecuteScalar()));
             });
         }
@@ -177,7 +177,7 @@ namespace dukaan.dataapi.tests
 
                 var hierarchy = JsonConvert.DeserializeObject<Hierarchy>((string)command.ExecuteScalar());
 
-                Traverse(hierarchy.Root, (node) => 
+                Traverse(hierarchy.Root, (node) =>
                 {
                     if (node.Id == Root)
                     {
