@@ -1,0 +1,13 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "v3.3.7",
+    "font-awesome": "Font-Awesome#v4.7.0",
+    "bootstrap-select": "v1.12.2",
+    "owl.carousel": "2.2.1",
+    "html5shiv": "3.7.3",
+    "respond": "1.4.2",
+    "robotodraft": "v1.1.0"
+  }
+}
