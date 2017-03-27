@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using static dukaan.web.Models.Hierarchy;
 
-namespace dukaan.web.Infrastructure
+namespace dukaan.web.Infrastructure.Json
 {
     public class HierarchyDocumentBuilderContractResolver : DefaultContractResolver
     {

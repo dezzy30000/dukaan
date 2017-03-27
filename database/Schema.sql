@@ -83,8 +83,12 @@ returns varchar as $$
 		for(var index = 0; index < hierarchyData.length; index++){      
       		if(hierarchyData[index].id === node.Id){
       			var nodeId = node.Id;
-      			delete node.Id; //This is a hack so metadata items are first in the list. plv8.execute() returns metadata properties in the wrong order.
-      			node.Id = nodeId;
+
+				//This is a hack to support metadata items being the first properties on a object.
+				//plv8.execute() returns metadata properties in the wrong order.
+      			delete node.Id;
+      			
+				node.Id = nodeId;
       			node.Content = JSON.stringify(hierarchyData[index].body);
         		node.Type = hierarchyData[index].type;
         		node["CreatedAt"] = hierarchyData[index]["created_at"];
@@ -95,6 +99,7 @@ returns varchar as $$
       	}
       
       	if(!found){
+			//TODO:This needs to go into a database logging table which can then be monitored.
       		plv8.elog(WARNING, "Couldn not find record for node with id " + node.id + " and for hierarchy with key value " + hierarchy_key);
       	}
     }));

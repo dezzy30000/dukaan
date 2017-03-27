@@ -1,4 +1,4 @@
-using dukaan.web.Infrastructure;
+using dukaan.web.Infrastructure.Json;
 using dukaan.web.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
