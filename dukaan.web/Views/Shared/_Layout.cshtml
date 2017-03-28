@@ -21,9 +21,9 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <script src="~/lib/html5shiv/dist/html5shiv.min.js"></script>
+        <script src="~/lib/html5shiv/dist/html5shiv.min.js"></script>
+      <script src="~/lib/respond/dest/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -289,7 +289,7 @@
     <!-- Full Slider -->
     <div class="container-fluid">
         <div class="row">
-            <div class="home-slider">
+            <div id="home_slider" class="owl-carousel">
                 <div class="item">
                     <a href="products.html"><img src="images/demo/slide-1-full.jpg" alt="Slider"></a>
                 </div>
@@ -311,7 +311,7 @@
             <!-- New Arrivals & Best Selling -->
             <div class="col-md-3 m-b-1">
                 <div class="title"><span><a href="products.html">New Arrivals <i class="fa fa-chevron-circle-right"></i></a></span></div>
-                <div class="widget-slider owl-controls-top-offset m-b-2">
+                <div id="widget_slider_new_arrivals" class="owl-carousel owl-controls-top-offset m-b-2">
                     <div class="box-product-outer">
                         <div class="box-product">
                             <div class="img-wrapper">
@@ -398,7 +398,7 @@
                     </div>
                 </div>
                 <div class="title"><span><a href="products.html">Best Selling <i class="fa fa-chevron-circle-right"></i></a></span></div>
-                <div class="widget-slider owl-controls-top-offset">
+                <div id="widget_slider_best_selling" class="owl-carousel owl-controls-top-offset">
                     <div class="box-product-outer">
                         <div class="box-product">
                             <div class="img-wrapper">
@@ -671,7 +671,7 @@
 
                 <!-- Collection -->
                 <div class="title m-t-2"><span>V-Neck Collection</span></div>
-                <div class="product-slider owl-controls-top-offset">
+                <div id="product_slider" class="owl-carousel owl-controls-top-offset">
                     <div class="box-product-outer">
                         <div class="box-product">
                             <div class="img-wrapper">
@@ -869,7 +869,7 @@
         <div class="row">
             <div class="col-xs-12 m-t-1">
                 <div class="title text-center"><span>Brand & Clients</span></div>
-                <div class="brand-slider owl-controls-top-offset">
+                <div id="brand_slider" class="owl-carousel owl-controls-top-offset">
                     <div class="brand">
                         <a href=""><img src="images/demo/brand1.png" alt=""></a>
                     </div>
@@ -999,24 +999,6 @@
     <a href="#top" class="back-top text-center" onclick="$('body,html').animate({scrollTop:0},500); return false">
         <i class="fa fa-angle-double-up"></i>
     </a>
-
-    <div class="chooser chooser-hide">
-        <div class="chooser-toggle"><button class="btn btn-warning" type="button"><i class="fa fa-paint-brush bigger-130"></i></button></div>
-        <div class="chooser-content">
-            <label>Color</label>
-            <select name="color-chooser" id="color-chooser" class="form-control input-sm selectpicker">
-                <option value="indigo">Indigo</option>
-                <option value="red">Red</option>
-                <option value="teal">Teal</option>
-                <option value="brown">Brown</option>
-            </select>
-            <label class="m-t-1">Style</label>
-            <select name="style-chooser" id="style-chooser" class="form-control input-sm selectpicker">
-                <option value="flat">Flat</option>
-                <option value="rounded">Rounded</option>
-            </select>
-        </div>
-    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="~/lib/jquery/dist/jquery.js"></script>

@@ -825,7 +825,7 @@ input[type=radio] {
         border-bottom-right-radius: 0;
     }
 
-.owl-theme.owl-controls-top-offset .owl-controls {
+.owl-theme .owl-controls-top-offset .owl-controls {
     right: 0;
     margin-top: -35px;
 }
