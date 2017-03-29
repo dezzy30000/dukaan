@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -17,7 +18,7 @@ namespace dukaan.web.Models
 
             public string Id { get; set; }
             public string Type { get; set; }
-            public string Content { get; set; }
+            public JObject Content { get; set; }
             public DateTime CreatedAt { get; set; }
             public DateTime UpdatedAt { get; set; }
             public Node Parent { get; set; }

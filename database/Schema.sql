@@ -89,7 +89,7 @@ returns varchar as $$
       			delete node.Id;
       			
 				node.Id = nodeId;
-      			node.Content = JSON.stringify(hierarchyData[index].body);
+      			node.Content = hierarchyData[index].body;
         		node.Type = hierarchyData[index].type;
         		node["CreatedAt"] = hierarchyData[index]["created_at"];
         		node["UpdatedAt"] = hierarchyData[index]["updated_at"];

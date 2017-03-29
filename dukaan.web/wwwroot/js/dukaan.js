@@ -107,7 +107,7 @@ $(function () {
 
     var relatedproductslider = $('#related_product_slider')
 
-    if (relatedproductslider .exist()) {
+    if (relatedproductslider.exist()) {
         relatedproductslider.owlCarousel({
             dots: false,
             nav: true,
