@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 
 namespace dukaan.web.Models
 {
@@ -13,7 +12,7 @@ namespace dukaan.web.Models
         {
             public Node()
             {
-                Children = new List<Node>();
+                Children = new Node[] { };
             }
 
             public string Id { get; set; }
@@ -22,7 +21,7 @@ namespace dukaan.web.Models
             public DateTime CreatedAt { get; set; }
             public DateTime UpdatedAt { get; set; }
             public Node Parent { get; set; }
-            public List<Node> Children { get; set; }
+            public Node[] Children { get; set; }
         }
 
         public string Id { get; set; }

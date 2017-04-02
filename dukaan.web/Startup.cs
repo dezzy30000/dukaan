@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using dukaan.web.Infrastructure.Ioc;
+using dukaan.web.Infrastructure.Routing;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +14,8 @@ namespace dukaan.web
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
@@ -22,6 +26,8 @@ namespace dukaan.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDukaan(Configuration);
+            services.AddSingleton(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -35,11 +41,10 @@ namespace dukaan.web
 
             app.UseStaticFiles();
 
-            app.UseMvc(routes =>
+            app.UseMvc(routeBuildler =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                routeBuildler
+                    .MapPageRoute("pagewebsiterouting", "{*slug}");
             });
         }
     }

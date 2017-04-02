@@ -228,7 +228,7 @@ namespace dukaan.dataapi.tests
 
         private void Traverse(Node node, Action<Node> callback)
         {
-            for (int index = 0; index < node.Children.Count; index++)
+            for (int index = 0; index < node.Children.Length; index++)
             {
                 Traverse(node.Children[index], callback);
             }
@@ -238,7 +238,7 @@ namespace dukaan.dataapi.tests
 
         private void TraverseWithParent(Node node, Node parent, Action<Node, Node> callback)
         {
-            for (int index = 0; index < node.Children.Count; index++)
+            for (int index = 0; index < node.Children.Length; index++)
             {
                 TraverseWithParent(node.Children[index], node, callback);
             }
@@ -258,37 +258,37 @@ namespace dukaan.dataapi.tests
             var root = new Node
             {
                 Id = "1472459628771017730",
-                Children = new List<Node>
+                Children = new []
                 {
                     new Node
                     {
                         Id = "1472459628812960771",
-                        Children = new List<Node>
+                        Children = new []
                         {
                             new Node
                             {
                                 Id = "1472459628812960772",
-                                Children = new List<Node>
+                                Children = new []
                                 {
                                     new Node
                                     {
                                         Id = "1472459628812960773",
-                                        Children = new List<Node>
+                                        Children = new []
                                         {
                                             new Node
                                             {
                                                 Id = "1472459628812960774",
-                                                Children = new List<Node>
+                                                Children = new []
                                                 {
                                                     new Node
                                                     {
                                                         Id = "1472459628829738023",
-                                                        Children = new List<Node>
+                                                        Children = new []
                                                         {
                                                             new Node
                                                             {
                                                                 Id = "1472459628829738024",
-                                                                Children = new List<Node>
+                                                                Children = new []
                                                                 {
                                                                     new Node
                                                                     {
@@ -321,12 +321,12 @@ namespace dukaan.dataapi.tests
                     new Node
                     {
                         Id = "1472459628812960778",
-                        Children = new List<Node>
+                        Children = new []
                         {
                             new Node
                             {
                                 Id = "1472459628812960779",
-                                Children = new List<Node>
+                                Children = new []
                                 {
                                     new Node { Id = "1472459628812960780" },
                                     new Node { Id = "1472459628812960781" },
@@ -341,17 +341,17 @@ namespace dukaan.dataapi.tests
                     new Node
                     {
                         Id = "1472459628821349394",
-                        Children = new List<Node>
+                        Children = new []
                         {
                             new Node
                             {
                                 Id = "1472459628821349395",
-                                Children = new List<Node>
+                                Children = new []
                                 {
                                     new Node
                                     {
                                         Id = "1472459628821349396",
-                                        Children = new List<Node>
+                                        Children = new []
                                         {
                                             new Node { Id = "1472459628821349397" },
                                             new Node { Id = "1472459628821349398" },
@@ -368,7 +368,7 @@ namespace dukaan.dataapi.tests
                     new Node
                     {
                         Id = "1472459628821349499",
-                        Children = new List<Node>
+                        Children = new []
                         {
                             new Node { Id = "1472459628821349403" },
                             new Node { Id = "1472459628821349404" },
