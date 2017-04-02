@@ -1,10 +1,10 @@
 using dukaan.web.Infrastructure.Json;
 using dukaan.web.Models;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Npgsql;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,6 +15,15 @@ namespace dukaan.dataapi.tests
 {
     public class HierarchyTests
     {
+        private readonly IConfigurationRoot _configuration;
+
+        public HierarchyTests()
+        {
+            _configuration = new ConfigurationBuilder()
+                .AddUserSecrets<HierarchyTests>()
+                .Build();
+        }
+
         [Fact]
         public void GivenAHierarchyLocateAllNodeIdsWhenParsedThenAListOfIdsIsReturned()
         {
@@ -209,7 +218,7 @@ namespace dukaan.dataapi.tests
 
         private void ConnectAndPrepareDatabase(Action<NpgsqlCommand> test, params string[] scripts)
         {
-            using (var connection = new NpgsqlConnection("Host=localhost;Username=user_dukaan_web;Password=password123;Database=dukaan;Search Path=dukaan.web"))
+            using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("dukaandb")))
             {
                 var sqlBuilder = new StringBuilder(File.ReadAllText(AppendCurrentDirectoryPath(@".\Schema.sql")));
 
