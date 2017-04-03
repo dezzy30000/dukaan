@@ -32,10 +32,30 @@ namespace dukaan.web.Models
         {
             get { return Parent == null; }
         }
-        
+
+        public IEnumerable<Node> Descendants
+        {
+            get { return Children.Concat(Children.SelectMany(child => child.Descendants)); }
+        }
+
+        public IEnumerable<Node> Ancestors
+        {
+            get
+            {
+                var parent = Parent;
+
+                while (parent != null)
+                {
+                    yield return parent;
+                    parent = parent.Parent;
+                }
+            }
+        }
+
+
         public IEnumerable<Node> NodeAndDescendants
         {
-            get { return new[] { this }.Concat(Children.SelectMany(child => child.NodeAndDescendants)); }
+            get { return new[] { this }.Concat(Descendants); }
         }
 
         public IEnumerable<Node> NodeAndAncestors
@@ -44,12 +64,9 @@ namespace dukaan.web.Models
             {
                 yield return this;
 
-                var parent = Parent;
-
-                while (parent != null)
+                foreach (var ancestor in Ancestors)
                 {
-                    yield return parent;
-                    parent = parent.Parent;
+                    yield return ancestor;
                 }
             }
         }
@@ -76,7 +93,7 @@ namespace dukaan.web.Models
             get
             {
                 return IsRoot
-                    ? new PathString("/")       
+                    ? new PathString("/")
                     : FromSlugToPathString(_slughelper.GenerateSlug(ValidateAndExtractValueForSlugGeneration()));
             }
         }
@@ -90,7 +107,7 @@ namespace dukaan.web.Models
         {
             if (!Content.TryGetValue(SlugContentPropertyName, out JToken token) || string.IsNullOrWhiteSpace(token.Value<string>()))
             {
-                var propertyValueExtractionIssue = token == null 
+                var propertyValueExtractionIssue = token == null
                     ? $"there is no property \"{SlugContentPropertyName}\" on the {nameof(Content)} object."
                     : $"the value of the property \"{SlugContentPropertyName}\" on the {nameof(Content)} object is empty. Value - {token.Value<string>()}.";
 

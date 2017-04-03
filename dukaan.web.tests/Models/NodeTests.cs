@@ -19,15 +19,15 @@ namespace dukaan.web.tests.Models
 
             Assert.Equal("1", nodeAndDecendants.ElementAt(0).Id);
             Assert.Equal("2", nodeAndDecendants.ElementAt(1).Id);
-            Assert.Equal("5", nodeAndDecendants.ElementAt(2).Id);
-            Assert.Equal("6", nodeAndDecendants.ElementAt(3).Id);
-            Assert.Equal("7", nodeAndDecendants.ElementAt(4).Id);
-            Assert.Equal("8", nodeAndDecendants.ElementAt(5).Id);
-            Assert.Equal("3", nodeAndDecendants.ElementAt(6).Id);
-            Assert.Equal("9", nodeAndDecendants.ElementAt(7).Id);
-            Assert.Equal("10", nodeAndDecendants.ElementAt(8).Id);
-            Assert.Equal("11", nodeAndDecendants.ElementAt(9).Id);
-            Assert.Equal("4", nodeAndDecendants.ElementAt(10).Id);
+            Assert.Equal("3", nodeAndDecendants.ElementAt(2).Id);
+            Assert.Equal("4", nodeAndDecendants.ElementAt(3).Id);
+            Assert.Equal("5", nodeAndDecendants.ElementAt(4).Id);
+            Assert.Equal("6", nodeAndDecendants.ElementAt(5).Id);
+            Assert.Equal("7", nodeAndDecendants.ElementAt(6).Id);
+            Assert.Equal("8", nodeAndDecendants.ElementAt(7).Id);
+            Assert.Equal("9", nodeAndDecendants.ElementAt(8).Id);
+            Assert.Equal("10", nodeAndDecendants.ElementAt(9).Id);
+            Assert.Equal("11", nodeAndDecendants.ElementAt(10).Id);
             Assert.Equal("12", nodeAndDecendants.ElementAt(11).Id);
             Assert.Equal("13", nodeAndDecendants.ElementAt(12).Id);
             Assert.Equal("14", nodeAndDecendants.ElementAt(13).Id);
@@ -58,21 +58,16 @@ namespace dukaan.web.tests.Models
         {
             var midLevelNode = BuildHierarchy()
                 .Children
-                .Last()
-                .Children
-                .First();
+                .ElementAt(1);
 
             var nodeAndDecendants = midLevelNode.NodeAndDescendants;
 
-            Assert.Equal(7, nodeAndDecendants.Count());
+            Assert.Equal(4, nodeAndDecendants.Count());
 
-            Assert.Equal("12", nodeAndDecendants.ElementAt(0).Id);
-            Assert.Equal("13", nodeAndDecendants.ElementAt(1).Id);
-            Assert.Equal("14", nodeAndDecendants.ElementAt(2).Id);
-            Assert.Equal("15", nodeAndDecendants.ElementAt(3).Id);
-            Assert.Equal("16", nodeAndDecendants.ElementAt(4).Id);
-            Assert.Equal("17", nodeAndDecendants.ElementAt(5).Id);
-            Assert.Equal("18", nodeAndDecendants.ElementAt(6).Id);
+            Assert.Equal("3", nodeAndDecendants.ElementAt(0).Id);
+            Assert.Equal("9", nodeAndDecendants.ElementAt(1).Id);
+            Assert.Equal("10", nodeAndDecendants.ElementAt(2).Id);
+            Assert.Equal("11", nodeAndDecendants.ElementAt(3).Id);
         }
 
         [Fact]
@@ -129,34 +124,109 @@ namespace dukaan.web.tests.Models
             Assert.Equal("1", nodeAndAncestors.ElementAt(2).Id);
         }
 
-        //[Fact]
-        //public void GivenANodeHierarchyWhenAllDecendantsOfANodeAreRequiredFromTheRootThenAllNodesAreCorrectlyReturned()
-        //{
-        //    var root = BuildHierarchy();
+        [Fact]
+        public void GivenANodeHierarchyWhenAllDecendantsOfANodeAreRequiredFromTheRootThenAllNodesAreCorrectlyReturned()
+        {
+            var root = BuildHierarchy();
 
-        //    var nodeAndDecendants = root.Descendants;
+            var decendants = root.Descendants;
 
-        //    Assert.Equal("1", nodeAndDecendants.ElementAt(0).Id);
-        //    Assert.Equal("2", nodeAndDecendants.ElementAt(1).Id);
-        //    Assert.Equal("5", nodeAndDecendants.ElementAt(2).Id);
-        //    Assert.Equal("6", nodeAndDecendants.ElementAt(3).Id);
-        //    Assert.Equal("7", nodeAndDecendants.ElementAt(4).Id);
-        //    Assert.Equal("8", nodeAndDecendants.ElementAt(5).Id);
-        //    Assert.Equal("3", nodeAndDecendants.ElementAt(6).Id);
-        //    Assert.Equal("9", nodeAndDecendants.ElementAt(7).Id);
-        //    Assert.Equal("10", nodeAndDecendants.ElementAt(8).Id);
-        //    Assert.Equal("11", nodeAndDecendants.ElementAt(9).Id);
-        //    Assert.Equal("4", nodeAndDecendants.ElementAt(10).Id);
-        //    Assert.Equal("12", nodeAndDecendants.ElementAt(11).Id);
-        //    Assert.Equal("13", nodeAndDecendants.ElementAt(12).Id);
-        //    Assert.Equal("14", nodeAndDecendants.ElementAt(13).Id);
-        //    Assert.Equal("15", nodeAndDecendants.ElementAt(14).Id);
-        //    Assert.Equal("16", nodeAndDecendants.ElementAt(15).Id);
-        //    Assert.Equal("17", nodeAndDecendants.ElementAt(16).Id);
-        //    Assert.Equal("18", nodeAndDecendants.ElementAt(17).Id);
-        //}
+            Assert.Equal(17, decendants.Count());
 
+            Assert.Equal("2", decendants.ElementAt(0).Id);
+            Assert.Equal("3", decendants.ElementAt(1).Id);
+            Assert.Equal("4", decendants.ElementAt(2).Id);
+            Assert.Equal("5", decendants.ElementAt(3).Id);
+            Assert.Equal("6", decendants.ElementAt(4).Id);
+            Assert.Equal("7", decendants.ElementAt(5).Id);
+            Assert.Equal("8", decendants.ElementAt(6).Id);
+            Assert.Equal("9", decendants.ElementAt(7).Id);
+            Assert.Equal("10", decendants.ElementAt(8).Id);
+            Assert.Equal("11", decendants.ElementAt(9).Id);
+            Assert.Equal("12", decendants.ElementAt(10).Id);
+            Assert.Equal("13", decendants.ElementAt(11).Id);
+            Assert.Equal("14", decendants.ElementAt(12).Id);
+            Assert.Equal("15", decendants.ElementAt(13).Id);
+            Assert.Equal("16", decendants.ElementAt(14).Id);
+            Assert.Equal("17", decendants.ElementAt(15).Id);
+            Assert.Equal("18", decendants.ElementAt(16).Id);
+        }
 
+        [Fact]
+        public void GivenANodeHierarchyWhenAllDecendantsOfANodeAreRequiredFromALeafThenAllNodesAreCorrectlyReturned()
+        {
+            var leaf = BuildHierarchy()
+                .Children
+                .First()
+                .Children
+                .First();
+            
+            Assert.Equal(0, leaf.Descendants.Count());
+        }
+
+        [Fact]
+        public void GivenANodeHierarchyWhenAllDecendantsOfANodeAreRequiredFromAMidLevelNodeThenAllNodesAreCorrectlyReturned()
+        {
+            var midLevelNode = BuildHierarchy()
+                .Children
+                .ElementAt(1);
+
+            var decendants = midLevelNode.Descendants;
+
+            Assert.Equal(3, decendants.Count());
+
+            Assert.Equal("9", decendants.ElementAt(0).Id);
+            Assert.Equal("10", decendants.ElementAt(1).Id);
+            Assert.Equal("11", decendants.ElementAt(2).Id);
+        }
+
+        [Fact]
+        public void GivenANodeHierarchyWhenAllAncestorsOfANodeAreRequiredFromALeafThenAllNodesAreCorrectlyReturned()
+        {
+            var leaf = BuildHierarchy()
+                .Children
+                .ElementAt(1)
+                .Children
+                .First()
+                .Children
+                .First()
+                .Children
+                .First();
+
+            var ancestors = leaf.Ancestors;
+
+            Assert.Equal(4, ancestors.Count());
+
+            Assert.Equal("10", ancestors.ElementAt(0).Id);
+            Assert.Equal("9", ancestors.ElementAt(1).Id);
+            Assert.Equal("3", ancestors.ElementAt(2).Id);
+            Assert.Equal("1", ancestors.ElementAt(3).Id);
+        }
+
+        [Fact]
+        public void GivenANodeHierarchyWhenAllAncestorsOfANodeAreRequiredFromARootThenAllNodeAreCorrectlyReturned()
+        {
+            var root = BuildHierarchy();
+
+            Assert.Equal(0, root.Ancestors.Count());
+        }
+
+        [Fact]
+        public void GivenANodeHierarchyWhenAllAncestorsOfANodeAreRequiredFromAMidLevelNodeThenAllNodesAreCorrectlyReturned()
+        {
+            var midLevelNode = BuildHierarchy()
+                .Children
+                .ElementAt(2)
+                .Children
+                .First();
+
+            var ancestors = midLevelNode.Ancestors;
+
+            Assert.Equal(2, ancestors.Count());
+
+            Assert.Equal("4", ancestors.ElementAt(0).Id);
+            Assert.Equal("1", ancestors.ElementAt(1).Id);
+        }
 
         //[Fact]
         //public void GivenANodeHierarchyThenOnlyOneAndTopNotShouldBeTheRootNode()
