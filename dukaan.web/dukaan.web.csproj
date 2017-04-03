@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="1.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
     <PackageReference Include="Npgsql" Version="3.2.2" />
+    <PackageReference Include="Slugify.Core" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>

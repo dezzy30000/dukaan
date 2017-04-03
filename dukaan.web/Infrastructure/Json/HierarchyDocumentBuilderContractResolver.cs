@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using dukaan.web.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Linq;
 using System.Reflection;
-using static dukaan.web.Models.Hierarchy;
 
 namespace dukaan.web.Infrastructure.Json
 {
