@@ -37,7 +37,6 @@ namespace dukaan.web.Infrastructure.Routing
 
         protected override Task OnRouteMatched(RouteContext context)
         {
-            //TODO:Get the last segment from the slug. Currently will return all url.
             //TODO:Deal with an empty database.
             //TODO:Need to filter requests. Images etc. Processing too much.
 

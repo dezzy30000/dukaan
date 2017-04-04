@@ -1,4 +1,5 @@
 ﻿using dukaan.web.Models;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
@@ -160,7 +161,7 @@ namespace dukaan.web.tests.Models
                 .First()
                 .Children
                 .First();
-            
+
             Assert.Equal(0, leaf.Descendants.Count());
         }
 
@@ -235,6 +236,55 @@ namespace dukaan.web.tests.Models
 
             Assert.True(root.IsRoot);
             Assert.True(root.Descendants.All(descendant => !descendant.IsRoot));
+        }
+
+        [Fact]
+        public void GivenANodeHierarchyWhenTraversedThenAllPathsAndSlugsAreCorrectlySet()
+        {
+            var assertsPathAndSlugData = new[]
+            {
+                new { Id = "1", Slug = new PathString("/"), Path= new PathString("/"), ParentPath = PathString.Empty },
+                new { Id = "2", Slug = new PathString("/magna"), Path= new PathString("/magna"), ParentPath = new PathString("/") },
+                new { Id = "3", Slug = new PathString("/ornare-gravida-diam"), Path= new PathString("/ornare-gravida-diam"), ParentPath = new PathString("/") },
+                new { Id = "4", Slug = new PathString("/convallis"), Path= new PathString("/convallis"), ParentPath = new PathString("/") },
+                new { Id = "5", Slug = new PathString("/nunc"), Path= new PathString("/magna/nunc"), ParentPath = new PathString("/magna") },
+                new { Id = "6", Slug = new PathString("/proin-euismod-laoreet-tellus"), Path= new PathString("/magna/proin-euismod-laoreet-tellus"), ParentPath = new PathString("/magna") },
+                new { Id = "7", Slug = new PathString("/at"), Path= new PathString("/magna/at"), ParentPath = new PathString("/magna") },
+                new { Id = "8", Slug = new PathString("/velit"), Path= new PathString("/magna/velit"), ParentPath = new PathString("/magna") },
+                new { Id = "9", Slug = new PathString("/quis-consectetur-erat"), Path= new PathString("/ornare-gravida-diam/quis-consectetur-erat"), ParentPath = new PathString("/ornare-gravida-diam") },
+                new { Id = "10", Slug = new PathString("/consequat-egestas"), Path= new PathString("/ornare-gravida-diam/quis-consectetur-erat/consequat-egestas"), ParentPath = new PathString("/ornare-gravida-diam/quis-consectetur-erat") },
+                new { Id = "11", Slug = new PathString("/quisque"), Path= new PathString("/ornare-gravida-diam/quis-consectetur-erat/consequat-egestas/quisque"), ParentPath = new PathString("/ornare-gravida-diam/quis-consectetur-erat/consequat-egestas") },
+                new { Id = "12", Slug = new PathString("/vivamus"), Path= new PathString("/convallis/vivamus"), ParentPath = new PathString("/convallis") },
+                new { Id = "13", Slug = new PathString("/hendrerit"), Path= new PathString("/convallis/vivamus/hendrerit"), ParentPath = new PathString("/convallis/vivamus") },
+                new { Id = "14", Slug = new PathString("/tincidunt-massa"), Path= new PathString("/convallis/vivamus/tincidunt-massa"), ParentPath = new PathString("/convallis/vivamus") },
+                new { Id = "15", Slug = new PathString("/donec-a"), Path= new PathString("/convallis/vivamus/donec-a"), ParentPath = new PathString("/convallis/vivamus") },
+                new { Id = "16", Slug = new PathString("/quam-at-facilisis"), Path= new PathString("/convallis/vivamus/quam-at-facilisis"), ParentPath = new PathString("/convallis/vivamus") },
+                new { Id = "17", Slug = new PathString("/suspendisse"), Path= new PathString("/convallis/vivamus/suspendisse"), ParentPath = new PathString("/convallis/vivamus") },
+                new { Id = "18", Slug = new PathString("/metus-at-lacus"), Path= new PathString("/convallis/vivamus/metus-at-lacus"), ParentPath = new PathString("/convallis/vivamus") }
+            };
+
+            var assertCount = 0;
+
+            foreach (var node in BuildHierarchy().NodeAndDescendants)
+            {
+                var expctedNodeAssertData = assertsPathAndSlugData.Single(assertNodeData => assertNodeData.Id == node.Id);
+
+                if (node.IsRoot)
+                {
+                    Assert.Null(node.Parent);
+                }
+                else
+                {
+                    Assert.Equal(expctedNodeAssertData.ParentPath, node.Parent.Path);
+                }
+
+                Assert.Equal(expctedNodeAssertData.Slug, node.Slug);
+                Assert.Equal(expctedNodeAssertData.Path, node.Path);
+
+                assertCount++;
+            }
+
+            Assert.Equal(assertCount, assertsPathAndSlugData.Length);
         }
 
         #region Test data

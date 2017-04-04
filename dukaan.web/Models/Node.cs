@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using dukaan.web.Infrastructure.Routing;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Slugify;
@@ -95,13 +96,8 @@ namespace dukaan.web.Models
                     return new PathString("/");
                 }
 
-                return FromSlugToPathString(_slughelper.GenerateSlug(value));
+                return _slughelper.GenerateSlug(value).ToPathString();
             }
-        }
-
-        public PathString FromSlugToPathString(string slug)
-        {
-            return new PathString($"/{slug}");
         }
 
         private bool ValidateAndExtractValueForSlugGeneration(string slugContentPropertyName, out string value)

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using dukaan.web.Infrastructure.Routing;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 
@@ -17,7 +18,7 @@ namespace dukaan.web.Models
         {
             return Root
                 .NodeAndDescendants
-                .SingleOrDefault(node => node.Slug.Equals(node.FromSlugToPathString(slug)));
+                .SingleOrDefault(node => node.Slug.Equals(slug.ToPathString()));
         }
     }
 }
