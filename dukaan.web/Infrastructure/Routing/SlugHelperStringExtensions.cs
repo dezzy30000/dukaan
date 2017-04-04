@@ -2,7 +2,7 @@
 
 namespace dukaan.web.Infrastructure.Routing
 {
-    public static class SlugHelperExtensionMethods
+    public static class SlugHelperStringExtensions
     {
         public static PathString ToPathString(this string slug)
         {

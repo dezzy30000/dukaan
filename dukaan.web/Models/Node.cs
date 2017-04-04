@@ -91,32 +91,13 @@ namespace dukaan.web.Models
         {
             get
             {
-                if (IsRoot || !ValidateAndExtractValueForSlugGeneration("Title", out string value))
+                if (IsRoot)
                 {
                     return new PathString("/");
                 }
 
-                return _slughelper.GenerateSlug(value).ToPathString();
+                return _slughelper.GenerateSlug(Content.Value<string>("Title")).ToPathString();
             }
-        }
-
-        private bool ValidateAndExtractValueForSlugGeneration(string slugContentPropertyName, out string value)
-        {
-            if (Content.TryGetValue(slugContentPropertyName, out JToken token) && token.Value<string>() != null)
-            {
-                value = token.Value<string>();
-                return true;
-            }
-
-            var propertyValueExtractionIssue = token == null
-                ? $"there is no property \"{slugContentPropertyName}\" on the {nameof(Content)} object."
-                : $"the value of the property \"{slugContentPropertyName}\" on the {nameof(Content)} object is null.";
-
-            //TODO:Change this to log to a logger and not throw and exception.
-            propertyValueExtractionIssue = $"Cannot extract value to generate slug from document with id {Id} because {propertyValueExtractionIssue}";
-
-            value = token.Value<string>();
-            return false;
         }
     }
 }

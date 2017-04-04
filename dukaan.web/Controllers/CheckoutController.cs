@@ -2,7 +2,7 @@
 
 namespace dukaan.web.Controllers
 {
-    public class HomeController : Controller
+    public class CheckoutController : Controller
     {
         public IActionResult Index()
         {

@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace dukaan.web.Infrastructure.Routing
 {
-    public static class MapPageRouteRouteBuilderExtensions
+    public static class PageRouteRouteBuilderExtensions
     {
         public static IRouteBuilder MapPageRoute(
             this IRouteBuilder routeBuilder,
