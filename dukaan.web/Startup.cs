@@ -43,7 +43,7 @@ namespace dukaan.web
             app.UseMvc(routeBuildler =>
             {
                 routeBuildler
-                    .MapPageRoute("pagewebsiterouting", "{*slug}");
+                    .MapPageRoute("pagewebsiterouting", "{*url}");
             });
         }
     }

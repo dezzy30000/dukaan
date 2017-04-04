@@ -11,8 +11,6 @@ namespace dukaan.web.Models
     [JsonObject(IsReference = true)]
     public class Node
     {
-        private const string SlugContentPropertyName = "Title";
-
         private readonly SlugHelper _slughelper = new SlugHelper();
 
         public Node()
@@ -75,11 +73,11 @@ namespace dukaan.web.Models
         {
             get
             {
-                var path = new PathString();
+                var path = new PathString("/");
 
                 foreach (var ancestor in NodeAndAncestors
                     .Reverse()
-                    .Select(node => new PathString(node.Slug)))
+                    .Select(node => node.Slug))
                 {
                     path = path.Add(ancestor);
                 }
@@ -92,9 +90,12 @@ namespace dukaan.web.Models
         {
             get
             {
-                return IsRoot
-                    ? new PathString("/")
-                    : FromSlugToPathString(_slughelper.GenerateSlug(ValidateAndExtractValueForSlugGeneration()));
+                if (IsRoot || !ValidateAndExtractValueForSlugGeneration("Title", out string value))
+                {
+                    return new PathString("/");
+                }
+
+                return FromSlugToPathString(_slughelper.GenerateSlug(value));
             }
         }
 
@@ -103,18 +104,23 @@ namespace dukaan.web.Models
             return new PathString($"/{slug}");
         }
 
-        private string ValidateAndExtractValueForSlugGeneration()
+        private bool ValidateAndExtractValueForSlugGeneration(string slugContentPropertyName, out string value)
         {
-            if (!Content.TryGetValue(SlugContentPropertyName, out JToken token) || string.IsNullOrWhiteSpace(token.Value<string>()))
+            if (Content.TryGetValue(slugContentPropertyName, out JToken token) && token.Value<string>() != null)
             {
-                var propertyValueExtractionIssue = token == null
-                    ? $"there is no property \"{SlugContentPropertyName}\" on the {nameof(Content)} object."
-                    : $"the value of the property \"{SlugContentPropertyName}\" on the {nameof(Content)} object is empty. Value - {token.Value<string>()}.";
-
-                throw new InvalidOperationException($"Cannot extract value to generate slug from document with id {Id} because {propertyValueExtractionIssue}");
+                value = token.Value<string>();
+                return true;
             }
 
-            return token.Value<string>();
+            var propertyValueExtractionIssue = token == null
+                ? $"there is no property \"{slugContentPropertyName}\" on the {nameof(Content)} object."
+                : $"the value of the property \"{slugContentPropertyName}\" on the {nameof(Content)} object is null.";
+
+            //TODO:Change this to log to a logger and not throw and exception.
+            propertyValueExtractionIssue = $"Cannot extract value to generate slug from document with id {Id} because {propertyValueExtractionIssue}";
+
+            value = token.Value<string>();
+            return false;
         }
     }
 }

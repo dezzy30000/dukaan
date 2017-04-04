@@ -4,6 +4,6 @@ namespace dukaan.web.Services.Interfaces
 {
     public interface IWebsiteDataService
     {
-        bool TryToGetPageNode(string slug, out Node node);
+        bool TryToGetPageNodeFromSlug(object url, out Node node);
     }
 }

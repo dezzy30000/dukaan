@@ -41,7 +41,7 @@ namespace dukaan.web.Infrastructure.Routing
             //TODO:Deal with an empty database.
             //TODO:Need to filter requests. Images etc. Processing too much.
 
-            if (_websiteDataService.TryToGetPageNode((string)context.RouteData.Values["slug"], out Node pageNode))
+            if (_websiteDataService.TryToGetPageNodeFromSlug(context.RouteData.Values["url"], out Node pageNode))
             {
                 var incomingPath = context.HttpContext.Request.Path;
                 var outgoingPath = pageNode.Path;

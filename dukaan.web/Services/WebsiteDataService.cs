@@ -14,11 +14,23 @@ namespace dukaan.web.Services
             _hierarchy = hierarchy;
         }
 
-        public bool TryToGetPageNode(string slug, out Node target)
+        public bool TryToGetPageNodeFromSlug(object url, out Node target)
         {
-            slug = slug ?? string.Empty
+            if (url == null || (url as string == null))
+            {
+                target = _hierarchy.Root;
+                return true;
+            }
+
+            var slug = ((string)url)
                 .Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)
-                .Last();
+                .LastOrDefault();
+
+            if (slug == null)
+            {
+                target = _hierarchy.Root;
+                return true;
+            }
 
             if ((target = _hierarchy.GetNodeBySlug(slug)) == null)
             {

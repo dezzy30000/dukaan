@@ -228,15 +228,14 @@ namespace dukaan.web.tests.Models
             Assert.Equal("1", ancestors.ElementAt(1).Id);
         }
 
-        //[Fact]
-        //public void GivenANodeHierarchyThenOnlyOneAndTopNotShouldBeTheRootNode()
-        //{
-        //    var root = BuildHierarchy();
+        [Fact]
+        public void GivenANodeHierarchyThenOnlyOneAndTopNotShouldBeTheRootNode()
+        {
+            var root = BuildHierarchy();
 
-        //    Assert.True(root.IsRoot);
-
-        //    root. .NodeAndDescendants()
-        //}
+            Assert.True(root.IsRoot);
+            Assert.True(root.Descendants.All(descendant => !descendant.IsRoot));
+        }
 
         #region Test data
 
