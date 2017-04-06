@@ -8,6 +8,12 @@ namespace dukaan.web.Infrastructure.Routing
 {
     public class PageRoute : Route
     {
+        public const string ControllerRouteDataValueKey = "controller";
+        public const string ControllerActionRouteDataValueKey = "action";
+        public const string PageNodeRouteDataValueKey = "pagenode";
+        public const string RedirectPathRouteDataValueKey = "redirectpath";
+        public const string FriendlyUrlRouteDataValueKey = "url";
+
         private readonly IWebsiteDataService _websiteDataService;
 
         protected PageRoute(IRouter target, string routeTemplate, IInlineConstraintResolver inlineConstraintResolver)
@@ -37,31 +43,30 @@ namespace dukaan.web.Infrastructure.Routing
 
         protected override Task OnRouteMatched(RouteContext context)
         {
-            //TODO:Deal with an empty database.
-            //TODO:Need to filter requests. Images etc. Processing too much.
+            //TODO: Deal with an empty database.
 
-            if (_websiteDataService.TryToGetPageNodeFromSlug(context.RouteData.Values["url"], out Node pageNode))
+            if (_websiteDataService.TryToGetPageNodeFromSlug(context.RouteData.Values[FriendlyUrlRouteDataValueKey], out Node pageNode))
             {
                 var incomingPath = context.HttpContext.Request.Path;
                 var outgoingPath = pageNode.Path;
 
                 if (incomingPath.Equals(outgoingPath))
                 {
-                    context.RouteData.Values["controller"] = pageNode.Type;
-                    context.RouteData.DataTokens["pagenode"] = pageNode;
+                    context.RouteData.Values[ControllerRouteDataValueKey] = pageNode.Type;
+                    context.RouteData.DataTokens[PageNodeRouteDataValueKey] = pageNode;
                 }
                 else
                 {
-                    context.RouteData.Values["controller"] = "Redirect";
-                    context.RouteData.DataTokens["redirectpath"] = outgoingPath;
+                    context.RouteData.Values[ControllerRouteDataValueKey] = "Redirect";
+                    context.RouteData.DataTokens[RedirectPathRouteDataValueKey] = outgoingPath;
                 }
             }
             else
             {
-                context.RouteData.Values["controller"] = "NotFound";
+                context.RouteData.Values[ControllerRouteDataValueKey] = "NotFound";
             }
 
-            context.RouteData.Values["action"] = "Index";
+            context.RouteData.Values[ControllerActionRouteDataValueKey] = "Index";
 
             return base.OnRouteMatched(context);
         }

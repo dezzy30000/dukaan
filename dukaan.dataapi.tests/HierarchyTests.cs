@@ -215,44 +215,6 @@ namespace dukaan.dataapi.tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void a()
-        {
-            var root = new Node
-            {
-                Id = "1485616302004372481",
-                Children = new[] 
-                {
-                    new Node { Id = "1485616302037926914" },
-                    new Node { Id = "1485616302037926915" },
-                    new Node { Id = "1485616302037926916" },
-                    new Node { Id = "1485616302037926917" },
-                    new Node { Id = "1485616302037926918" },
-                    new Node { Id = "1485616302037926919" },
-                    new Node { Id = "1485616302037926920" },
-                    new Node { Id = "1485616302037926921" },
-                    new Node { Id = "1485616302037926922" },
-                    new Node { Id = "1485616302037926923" },
-                    new Node { Id = "1485616302037926924" },
-                    new Node { Id = "1485616302037926925" },
-                    new Node { Id = "1485616302037926926" },
-                    new Node { Id = "1485616302037926927" },
-                    new Node { Id = "1485616302037926928" },
-                    new Node { Id = "1485616302037926928" }
-                }
-            };
-
-            TraverseWithParent(root, null, (node, parent) =>
-            {
-                node.Parent = parent;
-            });
-
-            var actual = JsonConvert.SerializeObject(root, new JsonSerializerSettings
-            {
-                ContractResolver = new HierarchyDocumentBuilderContractResolver()
-            });
-        }
-
         private void ConnectAndPrepareDatabase(Action<NpgsqlCommand> test, params string[] scripts)
         {
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("dukaandb")))

@@ -1,5 +1,6 @@
 ﻿using dukaan.web.Services.Interfaces;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace dukaan.web.Infrastructure.Routing
@@ -19,7 +20,7 @@ namespace dukaan.web.Infrastructure.Routing
                         routeName,
                         routeTemplate,
                         new RouteValueDictionary(null),
-                        new RouteValueDictionary(null),
+                        new RouteValueDictionary(new { httpMethod = new HttpMethodRouteConstraint("GET") }),
                         new RouteValueDictionary(null),
                         routeBuilder.ServiceProvider.GetRequiredService<IInlineConstraintResolver>()));
 

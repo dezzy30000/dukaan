@@ -1,4 +1,5 @@
 ﻿using dukaan.web.Infrastructure.Ioc;
+using dukaan.web.Infrastructure.ModelBinders;
 using dukaan.web.Infrastructure.Routing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,7 +25,8 @@ namespace dukaan.web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(options => 
+                options.ModelBinderProviders.Insert(0, new ContentModelBinderProvider()));
             services.AddDukaan(Configuration);
             services.AddSingleton(Configuration);
         }
@@ -43,7 +45,7 @@ namespace dukaan.web
             app.UseMvc(routeBuildler =>
             {
                 routeBuildler
-                    .MapPageRoute("pagewebsiterouting", "{*url}");
+                    .MapPageRoute("pagewebsiterouting", $"{{*{PageRoute.FriendlyUrlRouteDataValueKey}}}");
             });
         }
     }
