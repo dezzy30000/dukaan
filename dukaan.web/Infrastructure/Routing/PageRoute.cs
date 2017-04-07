@@ -56,7 +56,7 @@ namespace dukaan.web.Infrastructure.Routing
                 else
                 {
                     context.RouteData.Values[ControllerRouteDataValueKey] = "Redirect";
-                    context.RouteData.DataTokens[RedirectPathRouteDataValueKey] = outgoingPath;
+                    context.RouteData.Values[RedirectPathRouteDataValueKey] = outgoingPath;
                 }
             }
             else
