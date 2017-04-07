@@ -45,13 +45,13 @@ namespace dukaan.web.Infrastructure.Routing
         {
             if (_websiteDataService.TryToGetPageNodeFromSlug(context.RouteData.Values[FriendlyUrlRouteDataValueKey], out Node pageNode))
             {
-                var incomingPath = context.HttpContext.Request.Path;
                 var outgoingPath = pageNode.Path;
+                var incomingPath = context.HttpContext.Request.Path;
 
                 if (incomingPath.Equals(outgoingPath))
                 {
-                    context.RouteData.Values[ControllerRouteDataValueKey] = pageNode.Type;
                     context.RouteData.DataTokens[PageNodeRouteDataValueKey] = pageNode;
+                    context.RouteData.Values[ControllerRouteDataValueKey] = pageNode.Type;
                 }
                 else
                 {
@@ -73,7 +73,15 @@ namespace dukaan.web.Infrastructure.Routing
         {
             var virtualPathData = base.OnVirtualPathGenerated(context);
 
-            //TODO: Get the url from the slug and prepend to virtualPathData.VirtualPath;
+            if (virtualPathData == null && _websiteDataService.TryToGetPageNodeFromSlug(context.Values[FriendlyUrlRouteDataValueKey], out Node pageNode))
+            {
+                DataTokens[PageNodeRouteDataValueKey] = pageNode;
+                
+                context.Values[ControllerRouteDataValueKey] = pageNode.Type;
+                context.Values[ControllerActionRouteDataValueKey] = "Index";
+
+                virtualPathData = new VirtualPathData(this, pageNode.Path, DataTokens);
+            }
 
             return virtualPathData;
         }
