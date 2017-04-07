@@ -16,6 +16,12 @@ namespace dukaan.web.Services
 
         public bool TryToGetPageNodeFromSlug(object url, out Node target)
         {
+            if (_hierarchy.Root == null)
+            {
+                target = _hierarchy.Root;
+                return false;
+            }
+
             if (url == null || (url as string == null))
             {
                 target = _hierarchy.Root;

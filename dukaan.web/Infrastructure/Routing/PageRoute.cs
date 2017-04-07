@@ -43,8 +43,6 @@ namespace dukaan.web.Infrastructure.Routing
 
         protected override Task OnRouteMatched(RouteContext context)
         {
-            //TODO: Deal with an empty database.
-
             if (_websiteDataService.TryToGetPageNodeFromSlug(context.RouteData.Values[FriendlyUrlRouteDataValueKey], out Node pageNode))
             {
                 var incomingPath = context.HttpContext.Request.Path;
