@@ -10,6 +10,8 @@ function get_width() {
 
 $(function () {
 
+    var owlCarousels = [{ "element": $('#home_slider'), "options": { items: 1, loop: true, autoplay: true, autoplayHoverPause: true, dots: false, nav: true, navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'], } }, { "element": $('#widget_slider_new_arrivals'), "options": { items: 1, dots: false, nav: true, navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'], responsive: { 0: { items: 1, }, 480: { items: 2, }, 768: { items: 3, }, 992: { items: 1, } } } }, { "element": $('#widget_slider_best_selling'), "options": { items: 1, dots: false, nav: true, navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'], responsive: { 0: { items: 1, }, 480: { items: 2, }, 768: { items: 3, }, 992: { items: 1, } } } }, { "element": $('#product_slider'), "options": { dots: false, nav: true, navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'], responsive: { 0: { items: 1, }, 480: { items: 2, }, 768: { items: 3, }, 992: { items: 3, }, 1200: { items: 4, } } } }, { "element": $('#related_product_slider'), "options": { dots: false, nav: true, navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'], responsive: { 0: { items: 1, }, 480: { items: 2, }, 768: { items: 3, }, 992: { items: 5, }, 1200: { items: 6, } } } }, { "element": $('#brand_slider'), "options": { dots: false, nav: true, navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'], responsive: { 0: { items: 1, }, 480: { items: 2, margin: 15 }, 768: { items: 3, margin: 15 }, 992: { items: 4, margin: 30 }, 1200: { items: 6, margin: 30 } } } }];
+
     // open navigation dropdown on hover (only when width >= 768px)
     $('ul.nav li.dropdown').hover(function () {
         if (get_width() >= 767) {
@@ -29,140 +31,12 @@ $(function () {
         $(this).parent().toggleClass('open');
     });
 
-    // owlCarousel for Home Slider
-
-    var homeslider = $('#home_slider');
-
-    if (homeslider.exist()) {
-        homeslider.owlCarousel({
-            items: 1,
-            loop: true,
-            autoplay: true,
-            autoplayHoverPause: true,
-            dots: false,
-            nav: true,
-            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        });
-    }
-
-    // owlCarousel's for Widget Sliders
-
-    var sliderwidgets = [$('#widget_slider_new_arrivals'), $('#widget_slider_best_selling')];
-    
-    for (var index = 0; index < sliderwidgets.length; index++) {
-        if (sliderwidgets[index].exist()) {
-            sliderwidgets[index].owlCarousel({
-                items: 1,
-                dots: false,
-                nav: true,
-                navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-                responsive: {
-                    0: {
-                        items: 1,
-                    },
-                    480: {
-                        items: 2,
-                    },
-                    768: {
-                        items: 3,
-                    },
-                    992: {
-                        items: 1,
-                    }
-                }
-            });
+    // Carousels
+    for (var index = 0; index < owlCarousels.length; index++) {
+        var element = owlCarousels[index]["element"];
+        if (element.exist()) {
+            element.owlCarousel(owlCarousels[index]["options"])
         }
-    }
-
-    // owlCarousel for Product Slider
-
-    var productslider = $('#product_slider');
-
-    if (productslider.exist()) {
-        productslider.owlCarousel({
-            dots: false,
-            nav: true,
-            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                480: {
-                    items: 2,
-                },
-                768: {
-                    items: 3,
-                },
-                992: {
-                    items: 3,
-                },
-                1200: {
-                    items: 4,
-                }
-            }
-        });
-    }
-
-    // owlCarousel for Related Product Slider
-
-    var relatedproductslider = $('#related_product_slider')
-
-    if (relatedproductslider.exist()) {
-        relatedproductslider.owlCarousel({
-            dots: false,
-            nav: true,
-            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                480: {
-                    items: 2,
-                },
-                768: {
-                    items: 3,
-                },
-                992: {
-                    items: 5,
-                },
-                1200: {
-                    items: 6,
-                }
-            }
-        });
-    }
-
-    // owlCarousel for Brand Slider
-
-    var brandslider = $('#brand_slider');
-
-    if (brandslider.exist()) {
-        brandslider.owlCarousel({
-            dots: false,
-            nav: true,
-            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                480: {
-                    items: 2,
-                    margin: 15
-                },
-                768: {
-                    items: 3,
-                    margin: 15
-                },
-                992: {
-                    items: 4,
-                    margin: 30
-                },
-                1200: {
-                    items: 6,
-                    margin: 30
-                }
-            }
-        });
     }
 
     // Tooltip
