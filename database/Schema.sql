@@ -26,15 +26,14 @@ $$ language plpgsql;
 
 create function get_hierarchy_ids(hierarchy_key varchar)
 returns varchar[] as $$ 
+	var ids = [];
     var hierarchy = plv8.execute("select body from hierarchy_docs where key = $1;", hierarchy_key)
 	
 	if(hierarchy.length == 0){
-		return [];
+		return ids;
 	}
 	
 	hierarchy = hierarchy[0];
-
-    var ids = [];
     
 	(function(root, callback){
 		(function recurse(node) {
