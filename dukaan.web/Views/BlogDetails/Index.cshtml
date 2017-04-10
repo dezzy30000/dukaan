@@ -1,5 +1,60 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@section scripts{
+    <script src="~/js/dukaan.js"></script>
 }
+<!-- Breadcrumbs -->
+<div class="breadcrumb-container">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li class="active">Lorem ipsum dolor sit amet consectetur</li>
+        </ol>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+<!-- Main Content -->
+<div class="container m-t-3">
+    <div class="row">
+        <!-- Content -->
+        <div class="col-sm-8 blog-detail-content">
+            <div class="title"><span>Lorem ipsum dolor sit amet consectetur</span></div>
+            <small>
+                <span><i class="fa fa-clock-o"></i> Mar 27, 14</span>
+                <span><i class="fa fa-user"></i> <a href="">Admin</a></span>
+                <span><i class="fa fa-tag"></i> <a href="">Tags</a></span>
+            </small>
+            <img src="images/demo/blog-detail.jpg" alt="Blog Detail" class="img-thumbnail">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <div class="title m-t-3"><span>Share to</span></div>
+            <div class="share-button">
+                <button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i></button>
+                <button type="button" class="btn btn-info"><i class="fa fa-twitter"></i></button>
+                <button type="button" class="btn btn-danger"><i class="fa fa-google-plus"></i></button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-linkedin"></i></button>
+                <button type="button" class="btn btn-warning"><i class="fa fa-envelope"></i></button>
+            </div>
+        </div>
+        <!-- End Content -->
+        <!-- Blog Sidebar -->
+        <div class="col-sm-4">
+            <div class="title"><span>Categories</span></div>
+            <ul class="list-group list-group-nav">
+                <li class="list-group-item">&raquo; <a href="blog.html">News</a></li>
+                <li class="list-group-item">&raquo; <a href="blog.html">Events</a></li>
+                <li class="list-group-item">&raquo; <a href="blog.html">Promotions</a></li>
+            </ul>
+            <div class="title"><span>Archives</span></div>
+            <ul class="list-group list-group-nav">
+                <li class="list-group-item">&raquo; <a href="blog.html">January 2016</a></li>
+                <li class="list-group-item">&raquo; <a href="blog.html">February 2016</a></li>
+                <li class="list-group-item">&raquo; <a href="blog.html">March 2016</a></li>
+                <li class="list-group-item">&raquo; <a href="blog.html">April 2016</a></li>
+                <li class="list-group-item">&raquo; <a href="blog.html">May 2016</a></li>
+            </ul>
+        </div>
+        <!-- End Blog Sidebar -->
+    </div>
+</div>
+<!-- End Main Content -->

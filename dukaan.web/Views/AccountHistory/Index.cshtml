@@ -1,5 +1,77 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@section scripts{
+    <script src="~/js/dukaan.js"></script>
 }
+<!-- Breadcrumbs -->
+<div class="breadcrumb-container">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="account-profile.html">My Profile</a></li>
+            <li class="active">Order History</li>
+        </ol>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+<!-- Main Content -->
+<div class="container m-t-3">
+    <div class="row">
+        <!-- Account Sidebar -->
+        <div class="col-sm-4 col-md-3 m-b-3">
+            <div class="account-picture"><img src="images/demo/user.png" alt="" class="img-circle img-responsive"></div>
+            <h4 class="text-center m-b-3">John Thor</h4>
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation"><a href="account-profile.html">My Profile</a></li>
+                <li role="presentation"><a href="account-address.html">My Address</a></li>
+                <li role="presentation" class="active"><a href="account-history.html">Order History</a></li>
+                <li role="presentation"><a href="account-password.html">Change Password</a></li>
+            </ul>
+        </div>
+        <!-- End Account Sidebar -->
+        <!-- My Profile Content -->
+        <div class="col-sm-8 col-md-9">
+            <div class="title m-b-2"><span>Order History</span></div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>Order Id</td>
+                                    <td>Product</td>
+                                    <td>Date</td>
+                                    <td class="text-right">Amount</td>
+                                    <td class="text-center">Status</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="#"><span class="badge">12345</span></a></td>
+                                    <td>2 items</td>
+                                    <td>2016-12-19</td>
+                                    <td class="text-right">$74.00</td>
+                                    <td class="text-center"><span class="label label-warning">Processing</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#"><span class="badge">65678</span></a></td>
+                                    <td>3 items</td>
+                                    <td>2016-12-10</td>
+                                    <td class="text-right">$100.00</td>
+                                    <td class="text-center"><span class="label label-danger">Canceled</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#"><span class="badge">13579</span></a></td>
+                                    <td>1 item</td>
+                                    <td>2016-12-01</td>
+                                    <td class="text-right">$20.00</td>
+                                    <td class="text-center"><span class="label label-success">Finished</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End My Profile Content -->
+    </div>
+</div>
+<!-- End Main Content -->
