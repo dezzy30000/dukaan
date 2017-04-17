@@ -7,6 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
+//TODO: Get shopping cart working.
+//TODO: Create two or three directory paths.
+//TODO: Get elastic search working.
+
 namespace dukaan.web
 {
     public class Startup
