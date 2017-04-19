@@ -43,6 +43,7 @@ namespace dukaan.web.Infrastructure.Routing
 
         protected override Task OnRouteMatched(RouteContext context)
         {
+            //TODO: Need to handle when a slug matches more than one route.
             if (_websiteDataService.TryToGetPageNodeFromSlug(context.RouteData.Values[FriendlyUrlRouteDataValueKey], out Node pageNode))
             {
                 var outgoingPath = pageNode.Path;

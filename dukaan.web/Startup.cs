@@ -29,8 +29,11 @@ namespace dukaan.web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options => 
-                options.ModelBinderProviders.Insert(0, new ContentModelBinderProvider(Configuration)));
+            services.AddMvc(options =>
+            {
+                options.ModelBinderProviders.Insert(0, new NodeModelBinderProvider());
+                options.ModelBinderProviders.Insert(0, new ContentModelBinderProvider(Configuration));
+            });
             services.AddDukaan(Configuration);
             services.AddSingleton(Configuration);
         }
