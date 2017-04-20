@@ -6,7 +6,7 @@ namespace dukaan.web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(Node node, HomeContent content)
+        public IActionResult Index(Node node, HomeContent content, ShoppingCart shoppingCart)
         {
             return View();
         }

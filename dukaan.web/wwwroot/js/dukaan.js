@@ -65,6 +65,7 @@ $(function () {
         });
     }
 
+    //TODO: Performance tweak. Only do on add and remove. Server will render cart on return from server.
     simpleCart.bind('update', function () {
         if (this.quantity() === 0) {
             cartlinkquantitytext.text('items');

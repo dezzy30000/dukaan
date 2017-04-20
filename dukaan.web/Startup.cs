@@ -31,6 +31,7 @@ namespace dukaan.web
         {
             services.AddMvc(options =>
             {
+                options.ModelBinderProviders.Insert(0, new ShoppingCartModelBinderProvider());
                 options.ModelBinderProviders.Insert(0, new NodeModelBinderProvider());
                 options.ModelBinderProviders.Insert(0, new ContentModelBinderProvider(Configuration));
             });
