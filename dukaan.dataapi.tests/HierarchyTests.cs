@@ -7,6 +7,7 @@ using Npgsql;
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Xunit;
 
@@ -15,6 +16,8 @@ namespace dukaan.dataapi.tests
     public class HierarchyTests
     {
         private readonly IConfigurationRoot _configuration;
+        private readonly string _liveSchema = "dukaan.web";
+        private readonly string _testSchema = typeof(HierarchyTests).GetTypeInfo().Namespace;
 
         public HierarchyTests()
         {
@@ -51,16 +54,8 @@ namespace dukaan.dataapi.tests
                 Assert.Equal(expected, actual);
             },
             @".\TestData\HierarchyTests.sql");
-        }
 
-        private void Traverse(JObject node, Action<JObject> asserts)
-        {
-            foreach (var child in ((JArray)node["Children"]))
-            {
-                Traverse((JObject)child, asserts);
-            }
-
-            asserts(node);
+            TearDownDatabase();
         }
 
         [Fact]
@@ -147,6 +142,8 @@ namespace dukaan.dataapi.tests
                 Assert.Equal(assertCount, assertsNodeData.Length);
             },
              @".\TestData\HierarchyTests.sql");
+
+            TearDownDatabase();
         }
 
         [Fact]
@@ -161,6 +158,8 @@ namespace dukaan.dataapi.tests
 
                 Assert.Equal(0, actual.Length);
             });
+
+            TearDownDatabase();
         }
 
         [Fact]
@@ -173,6 +172,8 @@ namespace dukaan.dataapi.tests
 
                 Assert.NotNull(JObject.Parse((string)command.ExecuteScalar()));
             });
+
+            TearDownDatabase();
         }
 
         [Fact]
@@ -200,6 +201,8 @@ namespace dukaan.dataapi.tests
                 });
             },
             @".\TestData\HierarchyTests.sql");
+
+            TearDownDatabase();
         }
 
         [Fact]
@@ -213,25 +216,69 @@ namespace dukaan.dataapi.tests
             });
 
             Assert.Equal(expected, actual);
+
+            TearDownDatabase();
         }
+
+        #region Helper methods
 
         private void ConnectAndPrepareDatabase(Action<NpgsqlCommand> test, params string[] scripts)
         {
+            var sqlBuilder = new StringBuilder(File.ReadAllText(AppendCurrentDirectoryPath(@".\Schema.sql")));
+
+            foreach (var script in scripts)
+            {
+                sqlBuilder.AppendLine(File.ReadAllText(AppendCurrentDirectoryPath(script)));
+            }
+
+            foreach (var schema in new[]
+            {
+                    new { OldValue = $"drop schema if exists \"{_liveSchema}\" cascade;", NewValue = $"drop schema if exists \"{_testSchema}\" cascade;" },
+                    new { OldValue = $"create schema \"{_liveSchema}\";", NewValue = $"create schema \"{_testSchema}\";" },
+                    new { OldValue = $"set search_path=\"{_liveSchema}\";", NewValue = $"set search_path=\"{_testSchema}\";" }
+                })
+            {
+                sqlBuilder.Replace(schema.OldValue, schema.NewValue);
+            }
+
+            var sql = sqlBuilder.ToString();
+
+            Assert.DoesNotContain(_liveSchema, sql);
+
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("dukaandb")))
             {
-                var sqlBuilder = new StringBuilder(File.ReadAllText(AppendCurrentDirectoryPath(@".\Schema.sql")));
-
-                foreach (var script in scripts)
-                {
-                    sqlBuilder.AppendLine(File.ReadAllText(AppendCurrentDirectoryPath(script)));
-                }
-
-                using (var command = new NpgsqlCommand(sqlBuilder.ToString(), connection))
+                using (var command = new NpgsqlCommand(sql, connection))
                 {
                     connection.Open();
                     test(command);
                 }
             }
+        }
+
+        private void TearDownDatabase()
+        {
+            var sql = $"drop schema if exists \"{_testSchema}\" cascade;";
+
+            Assert.DoesNotContain(_liveSchema, sql);
+
+            using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("dukaandb")))
+            {
+                using (var command = new NpgsqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void Traverse(JObject node, Action<JObject> asserts)
+        {
+            foreach (var child in ((JArray)node["Children"]))
+            {
+                Traverse((JObject)child, asserts);
+            }
+
+            asserts(node);
         }
 
         private void Traverse(Node node, Action<Node> callback)
@@ -266,7 +313,7 @@ namespace dukaan.dataapi.tests
             var root = new Node
             {
                 Id = "1472459628771017730",
-                Children = new []
+                Children = new[]
                 {
                     new Node
                     {
@@ -402,6 +449,8 @@ namespace dukaan.dataapi.tests
 
             return root;
         }
+
+        #endregion
 
         #endregion
     }
