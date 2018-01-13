@@ -83,9 +83,7 @@ returns varchar as $$
       		if(hierarchyData[index].id === node.Id){
       			var nodeId = node.Id;
 
-				//This is a hack to support metadata items being the first properties on a object.
-				//plv8.execute() returns metadata properties in the wrong order.
-      			delete node.Id;
+      			delete node.Id; //This is a hack to support metadata items being the first properties on a object.
       			
 				node.Id = nodeId;
       			node.Content = hierarchyData[index].body;

@@ -231,14 +231,14 @@ namespace dukaan.dataapi.tests
                 sqlBuilder.AppendLine(File.ReadAllText(AppendCurrentDirectoryPath(script)));
             }
 
-            foreach (var schema in new[]
+            foreach (var map in new Func<string, string>[]
             {
-                    new { OldValue = $"drop schema if exists \"{_liveSchema}\" cascade;", NewValue = $"drop schema if exists \"{_testSchema}\" cascade;" },
-                    new { OldValue = $"create schema \"{_liveSchema}\";", NewValue = $"create schema \"{_testSchema}\";" },
-                    new { OldValue = $"set search_path=\"{_liveSchema}\";", NewValue = $"set search_path=\"{_testSchema}\";" }
-                })
+                schemaName => $"drop schema if exists \"{schemaName}\" cascade;",
+                schemaName => $"create schema \"{schemaName}\";",
+                schemaName => $"set search_path=\"{schemaName}\";"
+            })
             {
-                sqlBuilder.Replace(schema.OldValue, schema.NewValue);
+                sqlBuilder.Replace(map(_liveSchema), map(_testSchema));
             }
 
             var sql = sqlBuilder.ToString();
