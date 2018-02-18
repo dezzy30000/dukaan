@@ -5,9 +5,9 @@ namespace dukaan.web.Infrastructure.ModelBinders
 {
     public class ContentModelBinderProvider : IModelBinderProvider
     {
-        private readonly IConfigurationRoot _configuration;
+        private readonly IConfiguration _configuration;
 
-        public ContentModelBinderProvider(IConfigurationRoot configuration)
+        public ContentModelBinderProvider(IConfiguration configuration)
         {
             _configuration = configuration;
         }

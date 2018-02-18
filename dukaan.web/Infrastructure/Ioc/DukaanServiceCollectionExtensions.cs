@@ -10,7 +10,7 @@ namespace dukaan.web.Infrastructure.Ioc
 {
     public static class DukaanServiceCollectionExtensions
     {
-        public static void AddDukaan(this IServiceCollection services, IConfigurationRoot configuration)
+        public static void AddDukaan(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IWebsiteDataService>(serviceProvider =>
             {

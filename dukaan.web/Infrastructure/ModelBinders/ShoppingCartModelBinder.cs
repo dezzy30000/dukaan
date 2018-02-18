@@ -1,5 +1,4 @@
 ﻿using dukaan.web.Models;
-using Microsoft.AspNetCore.Mvc.Internal;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -21,7 +20,7 @@ namespace dukaan.web.Infrastructure.ModelBinders
                 });
             }
 
-            return TaskCache.CompletedTask;
+            return Task.CompletedTask;
         }
     }
 }

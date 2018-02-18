@@ -15,7 +15,7 @@ namespace dukaan.dataapi.tests
 {
     public class HierarchyTests
     {
-        private readonly IConfigurationRoot _configuration;
+        private readonly IConfiguration _configuration;
         private readonly string _liveSchema = "dukaan.web";
         private readonly string _testSchema = typeof(HierarchyTests).GetTypeInfo().Namespace;
 

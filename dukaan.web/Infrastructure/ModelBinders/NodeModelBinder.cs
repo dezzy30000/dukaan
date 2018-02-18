@@ -1,6 +1,5 @@
 ﻿using dukaan.web.Infrastructure.Routing;
 using dukaan.web.Models;
-using Microsoft.AspNetCore.Mvc.Internal;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Threading.Tasks;
 
@@ -16,7 +15,7 @@ namespace dukaan.web.Infrastructure.ModelBinders
                 bindingContext.Result = ModelBindingResult.Success(bindingContext.ActionContext.RouteData.DataTokens[PageRoute.PageNodeRouteDataValueKey]);
             }
 
-            return TaskCache.CompletedTask;
+            return Task.CompletedTask;
         }
     }
 }
