@@ -49,7 +49,7 @@ namespace dukaan.web.tests.Models
 
             var nodeAndDecendants = leaf.NodeAndDescendants;
 
-            Assert.Equal(1, nodeAndDecendants.Count());
+            Assert.Single(nodeAndDecendants);
 
             Assert.Equal("5", nodeAndDecendants.ElementAt(0).Id);
         }
@@ -102,7 +102,7 @@ namespace dukaan.web.tests.Models
 
             var nodeAndAncestors = root.NodeAndAncestors;
 
-            Assert.Equal(1, nodeAndAncestors.Count());
+            Assert.Single(nodeAndAncestors);
 
             Assert.Equal("1", nodeAndAncestors.ElementAt(0).Id);
         }
@@ -162,7 +162,7 @@ namespace dukaan.web.tests.Models
                 .Children
                 .First();
 
-            Assert.Equal(0, leaf.Descendants.Count());
+            Assert.Empty(leaf.Descendants);
         }
 
         [Fact]
@@ -209,7 +209,7 @@ namespace dukaan.web.tests.Models
         {
             var root = BuildHierarchy();
 
-            Assert.Equal(0, root.Ancestors.Count());
+            Assert.Empty(root.Ancestors);
         }
 
         [Fact]

@@ -53,7 +53,7 @@ namespace dukaan.dataapi.tests
 
                 Assert.Equal(expected, actual);
             },
-            @".\TestData\HierarchyTests.sql");
+            Path.Combine("TestData", "HierarchyTests.sql"));
 
             TearDownDatabase();
         }
@@ -141,7 +141,7 @@ namespace dukaan.dataapi.tests
 
                 Assert.Equal(assertCount, assertsNodeData.Length);
             },
-             @".\TestData\HierarchyTests.sql");
+            Path.Combine("TestData", "HierarchyTests.sql"));
 
             TearDownDatabase();
         }
@@ -200,7 +200,7 @@ namespace dukaan.dataapi.tests
                     }
                 });
             },
-            @".\TestData\HierarchyTests.sql");
+            Path.Combine("TestData", "HierarchyTests.sql"));
 
             TearDownDatabase();
         }
@@ -224,7 +224,7 @@ namespace dukaan.dataapi.tests
 
         private void ConnectAndPrepareDatabase(Action<NpgsqlCommand> test, params string[] scripts)
         {
-            var sqlBuilder = new StringBuilder(File.ReadAllText(AppendCurrentDirectoryPath(@".\Schema.sql")));
+            var sqlBuilder = new StringBuilder(File.ReadAllText(AppendCurrentDirectoryPath(@"Schema.sql")));
 
             foreach (var script in scripts)
             {
