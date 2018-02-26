@@ -156,7 +156,7 @@ namespace dukaan.dataapi.tests
 
                 var actual = (string[])command.ExecuteScalar();
 
-                Assert.Equal(0, actual.Length);
+                Assert.Empty(actual);
             });
 
             TearDownDatabase();
