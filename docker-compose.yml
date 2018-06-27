@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dukaan.web:
+    image: ${DOCKER_REGISTRY}dukaanweb
+    build:
+      context: .
+      dockerfile: dukaan.web/Dockerfile
