@@ -1,3 +1,5 @@
+\connect dukaandb
+
 create extension if not exists plv8;
 
 drop schema if exists "dukaan.web" cascade;

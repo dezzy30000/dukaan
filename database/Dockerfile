@@ -30,4 +30,6 @@ RUN buildDependencies="build-essential \
    && apt-get remove -y ${buildDependencies} \
    && apt-get autoremove -y \
    && apt-get install -y --no-install-recommends libc++1 \
-   && rm -rf /tmp/plv8 /var/lib/apt/lists/* \
+   && rm -rf /tmp/plv8 /var/lib/apt/lists/*
+
+COPY ./*-*.sql /docker-entrypoint-initdb.d/

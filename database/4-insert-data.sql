@@ -1,3 +1,5 @@
+\connect dukaandb
+
 set search_path="dukaan.web";
 
 delete from node_docs;
