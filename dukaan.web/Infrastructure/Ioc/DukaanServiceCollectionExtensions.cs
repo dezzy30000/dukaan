@@ -25,7 +25,7 @@ namespace dukaan.web.Infrastructure.Ioc
                 )
                 .Execute(() =>
                 {
-                    using (var dbConnection = new NpgsqlConnection(configuration["db_connection_string"]))
+                    using (var dbConnection = new NpgsqlConnection(string.Format(configuration["db_connection_string"], configuration["db_dukaan_web_user_password"])))
                     {
                         using (var command = new NpgsqlCommand("select get_hierarchy('website');", dbConnection))
                         {

@@ -10,6 +10,7 @@ services:
       - "51212:80"
     secrets:
       - db_connection_string
+      - db_dukaan_web_user_password
     depends_on:
       - database
     networks:
