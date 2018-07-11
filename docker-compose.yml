@@ -1,8 +1,39 @@
-version: '3.4'
+version: '3.6'
 
 services:
-  dukaan.web:
-    image: ${DOCKER_REGISTRY}dukaanweb
+  web:
+    image: dukaanweb
     build:
       context: .
       dockerfile: dukaan.web/Dockerfile
+    ports:
+      - "51212:80"
+    secrets:
+      - db_connection_string
+    depends_on:
+      - database
+    networks:
+      - webnet
+  database:
+    image: dukaandatabase
+    build:
+      context: .
+      dockerfile: database/Dockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_postgres_user_password
+    secrets:
+      - db_dukaan_web_user_password
+      - db_postgres_user_password
+    networks:
+      - webnet
+secrets:
+  db_connection_string:
+    file: secrets/db_connection_string.txt
+  db_dukaan_web_user_password:
+    file: secrets/db_dukaan_web_user_password.txt
+  db_postgres_user_password:
+    file: secrets/db_postgres_user_password.txt
+networks:
+  webnet:

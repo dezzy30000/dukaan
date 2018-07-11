@@ -66,6 +66,5 @@
   },
   "_source": "https://github.com/ExactTarget/fuelux.git",
   "_target": "3.15.12",
-  "_originalSource": "fuelux",
-  "_direct": true
+  "_originalSource": "fuelux"
 }

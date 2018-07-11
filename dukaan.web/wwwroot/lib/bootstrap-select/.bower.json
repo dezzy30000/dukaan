@@ -35,8 +35,7 @@
     "tag": "v1.12.2",
     "commit": "4eb040b7097fd8eab8184e54efe973ce8468e9b2"
   },
-  "_source": "https://github.com/silviomoreto/bootstrap-select.git",
+  "_source": "https://github.com/snapappointments/bootstrap-select.git",
   "_target": "v1.12.2",
-  "_originalSource": "bootstrap-select",
-  "_direct": true
+  "_originalSource": "bootstrap-select"
 }

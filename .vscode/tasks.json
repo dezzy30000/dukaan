@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/dukaan.web/dukaan.web.csproj"
+                "${workspaceFolder}/dukaan.dataapi.tests/dukaan.dataapi.tests.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
