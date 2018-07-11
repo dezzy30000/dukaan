@@ -11,3 +11,9 @@ To run the application
 3. Type and the enter the command `docker-compose up` from the root of the application directory.
 
 4. Wait for things to spin up and then navigate to `http://localhost:51212/`
+
+Technologies
+
+- asp.net core 2.1
+- postgresql
+- docker
