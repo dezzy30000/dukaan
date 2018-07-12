@@ -12,9 +12,10 @@ To run the application
 
 Technologies
 
-- asp.net core 2.1
-- postgresql
-- docker
+- [asp.net core 2.1](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-2.1)
+- [postgresql](https://www.postgresql.org/)
+- [docker](https://www.docker.com/)
+- [plv8](https://github.com/plv8/plv8)
 
 Nitpick corner
 
