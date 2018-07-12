@@ -1,6 +1,6 @@
 # dukaan
 
-A Content Management System designed from the ground to be fast and scalable.
+A Content Management System designed from the ground up to be fast, scalable and platform agnostic.
 
 To run the application
 
