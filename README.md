@@ -4,7 +4,7 @@ A Content Management System designed from the ground up to be fast, scalable and
 
 To run the application
 
-1. Install Docker
+1. Install Docker and Docker Compose
 
 2. Type and the enter the command `docker-compose up` from the root of the application directory.
 
