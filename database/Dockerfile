@@ -32,4 +32,4 @@ RUN buildDependencies="build-essential \
    && apt-get install -y --no-install-recommends libc++1 \
    && rm -rf /tmp/plv8 /var/lib/apt/lists/*
 
-COPY database/*-*.sql /docker-entrypoint-initdb.d/
+COPY database/*-*.sql database/*-*.sh /docker-entrypoint-initdb.d/
