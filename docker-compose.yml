@@ -24,8 +24,6 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD_FILE: /run/secrets/db_postgres_user_password
-    volumes:
-      - "./database/postgresql.conf:/var/lib/postgresql/data/postgresql.conf"
     secrets:
       - db_dukaan_web_user_password
       - db_postgres_user_password
