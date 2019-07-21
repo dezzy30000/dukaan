@@ -15,7 +15,7 @@ To run the application
     - Navigate to `http://localhost:5050/`.
     - Login with the username `mohammad.shahab.rafiq@dukaan.co.uk` and password `{%096t4y8f99<@I`.
     - Bring up the context menu on the `Servers` node, hover over the `Create` and click the `Server` node.
-    - Enter a name for the connection in `General` tab and then move over to the `Connection` tab.
+    - Enter a name for the connection in the `General` tab and then move over to the `Connection` tab.
     - Enter `database` in the `Host name/address` input field.
     - Enter `dukaan_web` in the `Username` input field.
     - Enter `;Ncd660(83m3V8F` in the `Password` input field, optionally check save password and then click Save.
