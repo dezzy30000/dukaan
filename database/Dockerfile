@@ -1,7 +1,7 @@
-FROM postgres:10.4
+FROM postgres:11.4
 
-ENV PLV8_VERSION=v2.3.5 \
-    PLV8_SHASUM="9f037b96c95b3112514cfb4d7e951040cd49d03cba6ae90c55b8d9ffe0c1e182  v2.3.5.tar.gz"
+ENV PLV8_VERSION=v2.3.12 \
+    PLV8_SHASUM="0bd5cbd8e6123d14451780240972289dcf53cf8c1ffa227aa9f34c296cd641d8  v2.3.12.tar.gz"
 
 RUN buildDependencies="build-essential \
     ca-certificates \
