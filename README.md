@@ -18,7 +18,7 @@ To run the application
     - Enter a name for the connection on `General` tab and then move over to the `Connection` tab.
     - Enter `database` in the `Host name/address` input field.
     - Enter `dukaan_web` in the `Username` input field.
-    - Enter `;Ncd660(83m3V8F` in the `Password` input field and then click Save.
+    - Enter `;Ncd660(83m3V8F` in the `Password` input field, optionally check save password and then click Save.
 
 Technologies
 
@@ -26,6 +26,7 @@ Technologies
 - [postgresql](https://www.postgresql.org/)
 - [docker](https://www.docker.com/)
 - [plv8](https://github.com/plv8/plv8)
+- [pgadmin](https://www.pgadmin.org/)
 
 Nitpick corner
 
