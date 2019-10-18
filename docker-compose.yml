@@ -19,7 +19,7 @@ services:
     image: dukaandatabase
     build:
       context: .
-      dockerfile: database/Dockerfile
+      dockerfile: dukaan.database/Dockerfile
     ports:
       - "5432:5432"
     environment:
