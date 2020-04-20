@@ -1,35 +1,39 @@
-FROM postgres:11.4
+FROM postgres:12.2
 
-ENV PLV8_VERSION=v2.3.12 \
-    PLV8_SHASUM="0bd5cbd8e6123d14451780240972289dcf53cf8c1ffa227aa9f34c296cd641d8  v2.3.12.tar.gz"
+ENV PLV8_VERSION=2.3.14 \
+    PLV8_SHASUM="9bfbe6498fcc7b8554e4b7f7e48c75acef10f07cf1e992af876a71e4dbfda0a6"
 
 RUN buildDependencies="build-essential \
     ca-certificates \
-    wget \
-    git \
+    curl \
+    git-core \
     python \
-    g++ \
-    clang \
-    postgresql-server-dev-$PG_MAJOR \
+    gpp \
+    cpp \
     pkg-config \
+    apt-transport-https \
+    cmake \
     libc++-dev \
-    libc++abi-dev" \
-   && apt-get update \
-   && apt-get -y upgrade \
-   && apt-get install -y --no-install-recommends ${buildDependencies} \
-   && mkdir -p /tmp/plv8 \
-   && wget -O /tmp/plv8/${PLV8_VERSION}.tar.gz "https://github.com/plv8/plv8/archive/$PLV8_VERSION.tar.gz" \
-   && cd /tmp/plv8 \
-   && echo ${PLV8_SHASUM} | sha256sum -c \
-   && tar -xzf /tmp/plv8/${PLV8_VERSION}.tar.gz -C /tmp/plv8/ \
-   && cd /tmp/plv8/plv8-${PLV8_VERSION#?} \
-   && make \
-   && make install \
-   && cd / \
-   && apt-get clean \
-   && apt-get remove -y ${buildDependencies} \
-   && apt-get autoremove -y \
-   && apt-get install -y --no-install-recommends libc++1 \
-   && rm -rf /tmp/plv8 /var/lib/apt/lists/*
+    libc++abi-dev \
+    postgresql-server-dev-$PG_MAJOR" \
+  && runtimeDependencies="libc++1 \
+    libtinfo5 \
+    libc++abi1" \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends ${buildDependencies} ${runtimeDependencies} \
+  && mkdir -p /tmp/build \
+  && curl -o /tmp/build/v$PLV8_VERSION.tar.gz -SL "https://github.com/plv8/plv8/archive/v${PLV8_VERSION}.tar.gz" \
+  && cd /tmp/build \
+  && echo $PLV8_SHASUM v$PLV8_VERSION.tar.gz | sha256sum -c \
+  && tar -xzf /tmp/build/v$PLV8_VERSION.tar.gz -C /tmp/build/ \
+  && cd /tmp/build/plv8-$PLV8_VERSION \
+  && make static \
+  && make install \
+  && strip /usr/lib/postgresql/${PG_MAJOR}/lib/plv8-${PLV8_VERSION}.so \
+  && rm -rf /root/.vpython_cipd_cache /root/.vpython-root \
+  && apt-get clean \
+  && apt-get remove -y ${buildDependencies} \
+  && apt-get autoremove -y \
+  && rm -rf /tmp/build /var/lib/apt/lists/*
 
-COPY dukaan.database/*-*.sql dukaan.database/*-*.sh /docker-entrypoint-initdb.d/
+  COPY dukaan.database/*-*.sql dukaan.database/*-*.sh /docker-entrypoint-initdb.d/
