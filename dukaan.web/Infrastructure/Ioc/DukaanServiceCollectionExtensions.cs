@@ -20,7 +20,7 @@ namespace dukaan.web.Infrastructure.Ioc
                 return Policy
                 .Handle<SocketException>()
                 .Or<PostgresException>()
-                .WaitAndRetry(5, retryAttempt =>
+                .WaitAndRetry(10, retryAttempt =>
                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                 )
                 .Execute(() =>
