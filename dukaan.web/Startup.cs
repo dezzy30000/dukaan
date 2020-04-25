@@ -46,7 +46,7 @@ namespace dukaan.web
             app.UseMvc(routeBuildler =>
             {
                 routeBuildler
-                    .MapPageRoute("pagewebsiterouting", $"{{*{PageRoute.FriendlyUrlRouteDataValueKey}}}");
+                    .MapPageRoute("pagewebsiterouting", $"{{**{PageRoute.FriendlyUrlRouteDataValueKey}}}");
             });
         }
     }
