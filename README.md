@@ -20,7 +20,7 @@ To run the application
     - Enter `dukaan_web` in the `Username` input field.
     - Enter `;Ncd660(83m3V8F` in the `Password` input field, optionally check save password and then click Save.
      
-5. We use PostgREST, a standalone webserver, to turn our PostgreSQL database directly into a RESTful API so we can query it. Swagger UI is used to visualise the api. Navigate to `http://localhost:8080/` to see it.
+5. PostgREST, a standalone webserver, is used to turn our PostgreSQL database directly into a RESTful API to be queried. Swagger UI is used to visualise the api. Navigate to `http://localhost:8080/` to see it.
 
 Technologies
 
