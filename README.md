@@ -19,6 +19,8 @@ To run the application
     - Enter `database` in the `Host name/address` input field.
     - Enter `dukaan_web` in the `Username` input field.
     - Enter `;Ncd660(83m3V8F` in the `Password` input field, optionally check save password and then click Save.
+     
+5. We use PostgREST, a standalone webserver, to turn our PostgreSQL database directly into a RESTful API so we can query it. We use Swagger UI to visualise the api. Navigate to `http://localhost:8080/` to see it.
 
 Technologies
 
@@ -27,6 +29,8 @@ Technologies
 - [docker](https://www.docker.com/)
 - [plv8](https://github.com/plv8/plv8)
 - [pgadmin](https://www.pgadmin.org/)
+- [PostgREST](https://postgrest.org/)
+- [Swagger](https://swagger.io/)
 
 Nitpick corner
 
