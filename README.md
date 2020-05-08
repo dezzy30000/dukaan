@@ -29,8 +29,8 @@ Technologies
 - [docker](https://www.docker.com/)
 - [plv8](https://github.com/plv8/plv8)
 - [pgadmin](https://www.pgadmin.org/)
-- [PostgREST](https://postgrest.org/)
-- [Swagger](https://swagger.io/)
+- [postgREST](https://postgrest.org/)
+- [swagger](https://swagger.io/)
 
 Nitpick corner
 
