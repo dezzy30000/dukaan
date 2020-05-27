@@ -18,7 +18,9 @@ namespace dukaan.web.Infrastructure.Ioc
             services.AddSingleton<IWebsiteDataService>(serviceProvider =>
             {
                 return Policy
-                .Handle<PostgresException>()
+                .Handle<NpgsqlException>()
+                .Or<SocketException>()
+                .Or<PostgresException>()
                 .WaitAndRetry(10, retryAttempt =>
                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                 )

@@ -32,7 +32,7 @@ services:
     image: dukaandatabase
     build:
       context: .
-      dockerfile: dukaan.database/Dockerfile
+      dockerfile: dukaan.database/latest/Dockerfile
     ports:
       - "5432:5432"
     environment:
@@ -61,6 +61,8 @@ services:
       - "8080"
     environment:
       API_URL: http://localhost:3000/
+    depends_on:
+      - databaseadmin      
     networks:
       - webnet      
 secrets:
